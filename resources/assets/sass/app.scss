@@ -1,0 +1,96 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  border-bottom: 1px solid forestgreen;
+  text-align: center;
+  width: 100%;
+  
+  ul {
+    list-style-type: none;
+    
+    li {
+      margin-left: 5em;
+      display: inline-block;
+    }
+    
+    a:first-child li {
+      margin-left: 0;
+    }
+  }
+}
+
+.teams {
+  .block {
+    border: 10px solid green;
+    border-radius: 10px;
+    margin: 2em;
+
+    div {
+      display: inline-block;
+    }
+
+    .name, .description {
+      position: absolute;
+    }
+
+    .description {
+      margin-top: 2em;
+    }
+  }
+}
+
+.tournament {
+  table {
+    th, td {
+      padding: 1em;
+    }
+  }
+}
+
+.games {
+  table {
+    th, td {
+      padding: 1em;
+    }
+  }
+}
+
+.calendar {
+  .date {
+    margin-left: 3em;
+  }
+
+  .home, .result, .guest {
+    display: inline-block;
+  }
+}
+
+.result {
+  table {
+    th, td {
+      padding: 1em;
+      text-align: center;
+    }
+  }
+}
+
+.import {
+  .nav {
+    display: inline-block;
+
+    ul {
+      list-style: none;
+
+      li {
+        width: 20em;
+      }
+    }
+  }
+
+  .match, .result, .export {
+    display: inline-block;
+  }
+}
