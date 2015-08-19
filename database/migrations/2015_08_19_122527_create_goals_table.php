@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableGoals extends Migration
+class CreateGoalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -37,6 +37,6 @@ class CreateTableGoals extends Migration
      */
     public function down()
     {
-        Schema::drop('Goals');
+        Schema::drop('goals');
     }
 }

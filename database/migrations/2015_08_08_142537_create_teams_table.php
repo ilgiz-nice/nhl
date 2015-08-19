@@ -27,6 +27,6 @@ class CreateTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('Teams');
+        Schema::drop('teams');
     }
 }

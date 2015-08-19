@@ -7,12 +7,28 @@
 
         {!! Form::hidden('action', 'match') !!}
 
-        {!! Form::label('match', 'Матч') !!}
-        {!! Form::input('file', 'match', '', ['accept' => 'xlsx']) !!}
+        {!! Form::label('num', 'Номер игры') !!}
+        {!! Form::input('number', 'num', 0, ['min' => '0']) !!}
 
-        {!! Form::submit() !!}
+        {!! Form::label('date', 'Дата') !!}
+        {!! Form::input('date', 'date') !!}
+
+        {!! Form::label('start', 'Время начала') !!}
+        {!! Form::input('time', 'start') !!}
+
+        {!! Form::label('finish', 'Время окончания') !!}
+        {!! Form::input('time', 'finish') !!}
+
+        {!! Form::label('home', 'Домашная команда') !!}
+        {!! Form::select('home', $teams) !!}
+
+        {!! Form::label('guest', 'Гостевая команда') !!}
+        {!! Form::select('guest', $teams) !!}
+
+        {!! Form::submit('Добавить') !!}
 
         {!! Form::close() !!}
+        <hr>
         <p>Импорт результата матча</p>
         {!! Form::open(['url' => '/import', 'enctype' => 'multipart/form-data']) !!}
 
@@ -24,22 +40,43 @@
         {!! Form::submit() !!}
 
         {!! Form::close() !!}
+        <hr>
         <p>Экспорт матча</p>
-        {!! Form::open() !!}
+        <table>
+            <thead>
+            <tr>
+                <th>Номер игры</th>
+                <th>Дата</th>
+                <th>Домашная команда</th>
+                <th>Гостевая команда</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($matches as $m)
+                <tr>
+                    <td>{{ $m->num }}</td>
+                    <td>{{ $m->date }}</td>
+                    <td>{{ $m->home }}</td>
+                    <td>{{ $m->guest }}</td>
+                    <td>
+                        {!! Form::open() !!}
 
-        {!! Form::hidden('action', 'export') !!}
+                        {!! Form::hidden('action', 'export') !!}
+                        {!! Form::hidden('id', $m->id) !!}
+                        {!! Form::hidden('num', $m->num) !!}
+                        {!! Form::hidden('date', $m->date) !!}
+                        {!! Form::hidden('home', $m->home_id) !!}
+                        {!! Form::hidden('guest', $m->guest_id) !!}
+                        {!! Form::hidden('test', $m->stage) !!}
 
-        {!! Form::label('num', 'Номер игры') !!}
-        {!! Form::input('number', 'num', '0', ['min' => 0]) !!}
+                        {!! Form::submit('Скачать') !!}
 
-        {!! Form::label('home', 'Домашная команда') !!}
-        {!! Form::select('home', $teams) !!}
-
-        {!! Form::label('guest', 'Гостевая команда') !!}
-        {!! Form::select('guest', $teams) !!}
-
-        {!! Form::submit('Скачать') !!}
-
-        {!! Form::close() !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
 @stop

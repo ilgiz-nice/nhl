@@ -77,20 +77,3 @@ a {
   }
 }
 
-.import {
-  .nav {
-    display: inline-block;
-
-    ul {
-      list-style: none;
-
-      li {
-        width: 20em;
-      }
-    }
-  }
-
-  .match, .result, .export {
-    display: inline-block;
-  }
-}

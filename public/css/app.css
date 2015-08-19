@@ -41,4 +41,14 @@ a {
   padding: 1em;
   text-align: center; }
 
+.import .nav {
+  display: inline-block; }
+  .import .nav ul {
+    list-style: none; }
+    .import .nav ul li {
+      width: 20em; }
+
+.import .match, .import .result, .import .export {
+  display: inline-block; }
+
 /*# sourceMappingURL=app.css.map */
