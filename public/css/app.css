@@ -1,0 +1,54 @@
+a {
+  text-decoration: none;
+  color: black; }
+
+.header {
+  border-bottom: 1px solid forestgreen;
+  text-align: center;
+  width: 100%; }
+  .header ul {
+    list-style-type: none; }
+    .header ul li {
+      margin-left: 5em;
+      display: inline-block; }
+    .header ul a:first-child li {
+      margin-left: 0; }
+
+.teams .block {
+  border: 10px solid green;
+  border-radius: 10px;
+  margin: 2em; }
+  .teams .block div {
+    display: inline-block; }
+  .teams .block .name, .teams .block .description {
+    position: absolute; }
+  .teams .block .description {
+    margin-top: 2em; }
+
+.tournament table th, .tournament table td {
+  padding: 1em; }
+
+.games table th, .games table td {
+  padding: 1em; }
+
+.calendar .date {
+  margin-left: 3em; }
+
+.calendar .home, .calendar .result, .calendar .guest {
+  display: inline-block; }
+
+.result table th, .result table td {
+  padding: 1em;
+  text-align: center; }
+
+.import .nav {
+  display: inline-block; }
+  .import .nav ul {
+    list-style: none; }
+    .import .nav ul li {
+      width: 20em; }
+
+.import .match, .import .result, .import .export {
+  display: inline-block; }
+
+/*# sourceMappingURL=app.css.map */
