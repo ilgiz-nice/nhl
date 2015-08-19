@@ -19,6 +19,7 @@ class MainController extends Controller
         $best = $this->best();
         $tournament = $this->tournament();
         //$news = $this->news();
+        //test
 
         return view('main.index', compact('calendar', 'best', 'tournament', 'news'));
     }
