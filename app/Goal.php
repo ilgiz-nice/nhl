@@ -21,4 +21,12 @@ class Goal extends Model
         'win_composition',
         'lose_composition'
     ];
+
+    public function scopeExist($query, $id, $time) {
+        $query->where('match_id', '=', $id)->where('time', '=', $time);
+    }
+
+    public function scopeUpdateGoals($query, $id, $time) {
+        $query->where('match_id', '=', $id)->where('time', '=', $time);
+    }
 }

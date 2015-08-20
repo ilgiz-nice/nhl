@@ -24,5 +24,7 @@
     </ul>
 </header>
 @yield('content')
+<script src="{{  }}"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
