@@ -8,8 +8,14 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "illuminate/html": "^5.0",
+<<<<<<< HEAD
         "maatwebsite/excel": "^2.0",
         "components/jquery": "^2.1"
+=======
+        "illuminate/html": "^5.0",
+        "illuminate/html": "^5.0",
+        "maatwebsite/excel": "^2.0"
+>>>>>>> f3ebb7fae61eb54b7013985d422aa4ddc691a024
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

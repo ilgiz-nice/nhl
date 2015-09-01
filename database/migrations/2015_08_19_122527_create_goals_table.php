@@ -27,7 +27,10 @@ class CreateGoalsTable extends Migration
             $table->string('disparity')->nullable();
             $table->string('win_composition');
             $table->string('lose_composition');
+<<<<<<< HEAD
             $table->timestamps();
+=======
+>>>>>>> f3ebb7fae61eb54b7013985d422aa4ddc691a024
         });
     }
 

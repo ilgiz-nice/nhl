@@ -32,7 +32,10 @@ class CreateMatchTable extends Migration
             $table->integer('win_additional_time')->nullable();
             $table->integer('lose_main_time')->nullable();
             $table->integer('lose_additional_time')->nullable();
+<<<<<<< HEAD
             $table->timestamps();
+=======
+>>>>>>> f3ebb7fae61eb54b7013985d422aa4ddc691a024
         });
     }
 
