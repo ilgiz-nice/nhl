@@ -24,6 +24,7 @@ class CreatePlayersTable extends Migration
             $table->string('city');
             $table->string('past_teams')->nullable();
             $table->string('photo');
+            $table->timestamps();
         });
     }
 

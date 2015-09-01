@@ -17,6 +17,7 @@ class CreateSeasonsTable extends Migration
             $table->string('year', 4);
             $table->string('participants');
             $table->boolean('active');
+            $table->timestamps();
         });
     }
 
