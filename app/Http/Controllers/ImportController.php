@@ -167,7 +167,7 @@ class ImportController extends Controller
                     'Победа - основное время', 'Победа - овертайм', 'Поражение - основное время', 'Поражение - овертайм'
                 ));
                 $sheet->row(2, array(
-                    $array['id'], '', '', $array['num'], '', '', $array['date'], '', '', $array['home'],
+                    $array['id'], '', '', $array['num'], '', '', $array['date'], $array['start'], $array['finish'], $array['home'],
                     $array['guest'], '', '', '', '', '', '', ''
                 ));
             });
