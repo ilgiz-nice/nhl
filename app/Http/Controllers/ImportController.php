@@ -50,6 +50,8 @@ class ImportController extends Controller
                 $this->export(Request::all());
                 break;
         }
+
+        redirect('/import');
     }
     public function match($array) {
         $active = DB::table('seasons')->select('id')->where('active', true)->get();
