@@ -24,9 +24,5 @@
     </ul>
 </header>
 @yield('content')
-<<<<<<< HEAD
-<script src="js/app.js"></script>
-=======
->>>>>>> f3ebb7fae61eb54b7013985d422aa4ddc691a024
 </body>
 </html>
