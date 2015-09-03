@@ -66,6 +66,8 @@
                         {!! Form::hidden('id', $m->id) !!}
                         {!! Form::hidden('num', $m->num) !!}
                         {!! Form::hidden('date', $m->date) !!}
+                        {!! Form::hidden('start', $m->start) !!}
+                        {!! Form::hidden('finish', $m->finish) !!}
                         {!! Form::hidden('home', $m->home_id) !!}
                         {!! Form::hidden('guest', $m->guest_id) !!}
                         {!! Form::hidden('test', $m->stage) !!}
