@@ -196,6 +196,7 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
+        'Carbon'    => Carbon\Carbon::class,
 
     ],
 

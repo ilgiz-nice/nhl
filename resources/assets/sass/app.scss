@@ -3,77 +3,189 @@ a {
   color: black;
 }
 
-.header {
-  border-bottom: 1px solid forestgreen;
-  text-align: center;
-  width: 100%;
-  
-  ul {
-    list-style-type: none;
-    
-    li {
-      margin-left: 5em;
-      display: inline-block;
-    }
-    
-    a:first-child li {
-      margin-left: 0;
-    }
+.import-page {
+  input {
+    padding: 6px 23px 7px;
   }
 }
 
-.teams {
-  .block {
-    border: 10px solid green;
-    border-radius: 10px;
-    margin: 2em;
+header {
+  padding-top: 0;
+}
 
-    div {
-      display: inline-block;
+.main {
+  .table {
+    thead {
+      height: 39px;
+      font-size: 14px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      font-family: 'Economica', sans-serif;
+
+      th {
+        border: 1px solid #c2c2c2;
+        text-transform: uppercase;
+        color: #908b8b;
+        line-height: 38px;
+        width: 47.5px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      th:first-child {
+        width: auto;
+      }
+      th:nth-child(9) {
+        width: auto;
+      }
     }
 
-    .name, .description {
-      position: absolute;
+    tbody {
+      cursor: pointer;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+
+      td {
+        border: 1px solid #c2c2c2;
+        text-shadow: none;
+        font-size: 20px;
+        color: #8a8687;
+        background: #fff;
+        height: 100%;
+        line-height: 40px;
+        text-align: center;
+        font-weight: 400;
+      }
+
+      tr:hover {
+        td {
+          color: #fff;
+          background: #608b7e;
+        }
+      }
+    }
+  }
+
+  .games {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+    .timeline {
+      display: inline-flex;
+      .block {
+        cursor: pointer;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #c2c2c2;
+        text-shadow: none;
+        font-size: 24px;
+        color: #8a8687;
+        background: #fff;
+        width: 292.5px;
+        height: 90px;
+        line-height:45px;
+        text-align: center;
+        font-weight: 400;
+        background: url(/images/nhl.png) no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+      .active {
+        color: #FFF;
+        background-color: #608b7e;
+      }
     }
 
-    .description {
-      margin-top: 2em;
+    .info {
+      display: flex;
+      .block {
+        cursor: pointer;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #c2c2c2;
+        text-shadow: none;
+        font-size: 24px;
+        color: #8a8687;
+        background: #fff;
+        width: 98vw;
+        height: 270px;
+        line-height: 90px;
+        text-align: center;
+        font-weight: 400;
+        background: url(/images/nhl.png) no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+    }
+  }
+
+  .statistics {
+    margin-bottom: 77px;
+    .bombardier, .sniper, .assist, .penalty {
+      width: 555px;
+      .table {
+        thead {
+          th {
+            width: 1%;
+          }
+        }
+      }
+    }
+  }
+
+  .tournament {
+    .table {
+      margin-top: 77px;
+    }
+  }
+
+  .news {
+    margin-top: 77px;
+    .main {
+      display: flex;
+      .left, .right {
+        width: 50%;
+        height: 195px;
+        .title {
+          height: 50px;
+          line-height: 50px;
+        }
+        .description {
+          font-size: 20px;
+          color: #c0c0c0;
+        }
+      }
+    }
+    .block {
+      width: 100%;
+      .title, .date {
+        display: inline-block;
+      }
+      .title {
+        width: 70%;
+      }
+      .date {
+        width: 30%;
+        text-align: left;
+      }
+    }
+    .title, .date {
+      font-weight: bold;
+      font-size: 24px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .date {
+      color: #c0c0c0;
     }
   }
 }
-
-.tournament {
-  table {
-    th, td {
-      padding: 1em;
-    }
-  }
-}
-
-.games {
-  table {
-    th, td {
-      padding: 1em;
-    }
-  }
-}
-
-.calendar {
-  .date {
-    margin-left: 3em;
-  }
-
-  .home, .result, .guest {
-    display: inline-block;
-  }
-}
-
-.result {
-  table {
-    th, td {
-      padding: 1em;
-      text-align: center;
-    }
-  }
-}
-

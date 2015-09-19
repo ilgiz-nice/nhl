@@ -9,6 +9,7 @@ class Season extends Model
     protected $fillable = [
         'year',
         'participants',
+        'placement',
         'active'
     ];
 }
