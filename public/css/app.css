@@ -8,6 +8,13 @@ a {
 header {
   padding-top: 0; }
 
+.menu_block:after {
+  left: 43%;
+  width: 930px; }
+
+.link {
+  cursor: pointer; }
+
 .main .table thead {
   height: 39px;
   font-size: 14px;

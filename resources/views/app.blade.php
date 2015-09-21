@@ -23,6 +23,7 @@
                             <li><a href="/calendar">Календарь/Результат</a></li>
                             <li><a href="/statistics">Статистика</a></li>
                             <li><a href="/teams">Команды</a></li>
+                            <li><a href="/regulations">Регламент</a></li>
                         </ul>
                     </nav>
                     <div class="clear"></div>

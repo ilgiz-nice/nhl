@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class CalendarController extends Controller
 {
     public function index() {
-
-        return view('calendar.index', compact('result'));
+        $calendar = Match::Calendar()->get();
+        return view('calendar.index', compact('calendar'));
     }
 }

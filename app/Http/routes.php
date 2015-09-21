@@ -26,37 +26,23 @@ Route::get('calendar', 'CalendarController@index');
 /*
  * Команды (3)
  */
-Route::resource('teams', 'TeamsController');
+Route::get('/teams', 'TeamsController@index');
+Route::get('/teams/{{id}}', 'TeamsController@show');
 /*
  * Статистика (4)
  */
 Route::get('statistics', 'StatisticsController@index');
 
 /*
+ * Регламент (5)
+ */
+Route::get('regulations', 'RegulationsController@index');
+/*
  * Импорт .xlsx
  */
-Route::get('import/match', 'ImportController@match');
-Route::get('import/result', 'ImportController@result');
-Route::get('import/export', 'ImportController@export');
 Route::resource('import', 'ImportController');
-
-/*
- * Результаты матчей
- */
-Route::get('games', 'GamesController@index');
-/*
- * Турнирная таблица
- */
-Route::get('tournament', 'TournamentController@index');
-/*
- * Календарь игр
- */
-Route::get('calendar_old', 'CalendarController@index');
-/*
- * Результаты встреч
- */
-Route::get('result', 'ResultController@index');
 /*
  * Игроки
  */
-Route::get('players', 'PlayersController@index');
+Route::get('/players', 'PlayersController@index');
+Route::get('/players/{{id}}', 'PlayersController@show');
