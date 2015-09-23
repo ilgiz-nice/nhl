@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
@@ -19,3 +19,12 @@ $factory->define(App\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Team::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'description' => $faker->paragraph(),
+        'coach_id' => 1,
+    ];
+});
+

@@ -2,8 +2,10 @@ a {
   text-decoration: none;
   color: black; }
 
-.import-page input {
-  padding: 6px 23px 7px; }
+.import-page {
+  height: 1700px; }
+  .import-page input {
+    padding: 6px 23px 7px; }
 
 header {
   padding-top: 0; }
