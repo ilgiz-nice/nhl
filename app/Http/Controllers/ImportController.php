@@ -199,6 +199,7 @@ class ImportController extends Controller
     {
         Excel::load($path, function ($reader) {
             $obj = $reader->toObject();
+            dump($obj);
             foreach ($obj[0] as $i) {
                 if (strlen($i->current_team) == 1) {
                     $friendly = '0' . $i->current_team;
