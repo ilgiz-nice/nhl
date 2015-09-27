@@ -168,8 +168,6 @@ class ImportController extends Controller
             });
 
         })->download('xlsx');
-
-        redirect('/import');
     }
 
     /*
