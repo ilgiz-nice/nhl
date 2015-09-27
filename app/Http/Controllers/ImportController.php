@@ -142,7 +142,6 @@ class ImportController extends Controller
 
     public function export($array) {
         $filename = $array['home_id'] . '_vs_' . $array['guest_id'];
-        dump($filename);
         Excel::create($filename, function($excel) use($array) {
             $excel->sheet('Матч', function($sheet) use($array) {
                 $sheet->row(1, array(
@@ -169,6 +168,8 @@ class ImportController extends Controller
             });
 
         })->download('xlsx');
+
+        dump($filename);
     }
 
     /*
