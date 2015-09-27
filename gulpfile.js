@@ -24,6 +24,8 @@ elixir(function(mix) {
 
     mix.scripts([
         'jquery.js',
-        'js.js'
+        'js.js',
+        'main.js',
+        'import.js'
     ]);
 });
