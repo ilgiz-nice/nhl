@@ -167,7 +167,7 @@ class ImportController extends Controller
                 ));
             });
 
-        })->download('xlsx');
+        })->export('xlsx');
 
         dump($filename);
     }
