@@ -144,4 +144,54 @@ header {
   .main .news .date {
     color: #c0c0c0; }
 
+@charset "UTF-8";
+/*
+ * BACKEND
+*/
+.backend {
+  height: 1200px; }
+
+/*
+ * Tabs
+*/
+/*Обнуляем отступы*/
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+
+/*Задаём параметры блока, содержащего основное меню*/
+#menu {
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 50px;
+  /*Задаём стили для разделов нашего меню*/
+  /*Делаем скрытую часть видимой*/ }
+  #menu li {
+    display: inline-block;
+    position: relative;
+    height: 60px;
+    font-size: 14px;
+    font-family: 'Economica', sans-serif;
+    border: 1px solid #c2c2c2;
+    color: #908b8b;
+    line-height: 60px;
+    width: 130px;
+    text-align: center;
+    box-sizing: border-box;
+    /*Стили для скрытого выпадающего меню*/ }
+    #menu li ul {
+      position: absolute;
+      top: 60px;
+      left: -1px;
+      display: none;
+      border: 1px solid #c2c2c2;
+      width: 128px; }
+  #menu li:hover {
+    background-color: #608b7e;
+    color: #FFF; }
+    #menu li:hover ul {
+      display: block; }
+
 /*# sourceMappingURL=app.css.map */

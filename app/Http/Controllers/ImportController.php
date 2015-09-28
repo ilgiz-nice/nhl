@@ -142,7 +142,8 @@ class ImportController extends Controller
 
     public function export($array) {
         $filename = $array['home_id'] . '_vs_' . $array['guest_id'];
-        Excel::create($filename, function($excel) use($array) {
+        /* @var LaravelExcelWriter $file */
+        $file = Excel::create($filename, function($excel) use($array) {
             $excel->sheet('Матч', function($sheet) use($array) {
                 $sheet->row(1, array(
                     'id матча', 'Состав домашней команды', 'Состав гостевой команды', 'Номер игры', 'Стадия', 'Статус',
@@ -168,6 +169,7 @@ class ImportController extends Controller
             });
 
         })->download('xlsx');
+            return response()->download();
 
         dump($filename);
     }

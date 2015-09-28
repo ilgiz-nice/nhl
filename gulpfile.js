@@ -12,7 +12,10 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass([
+        'app.scss',
+        'backend.scss'
+    ]);
 
      mix.styles([
          'reset.css',
