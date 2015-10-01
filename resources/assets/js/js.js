@@ -4,4 +4,7 @@ $(document).ready(function() {
         var target = $(this).attr('data-href');
         document.location.href = target;
     });
+    $('a[href=#]').click(function(e) {
+        e.preventDefault();
+    });
 });

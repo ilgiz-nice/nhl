@@ -26,20 +26,20 @@
         </div>
         <div class="container_12">
             <div class="clear"></div>
-            <div class="grid_6 tournament">
+            <div class="grid_8 tournament">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Команда</th>
-                        <th>И</th>
-                        <th>В</th>
-                        <th>ВО</th>
-                        <th>ВБ</th>
-                        <th>ПБ</th>
-                        <th>ПО</th>
-                        <th>П</th>
-                        <th>Ш</th>
-                        <th>О</th>
+                        <th class="team">Команда</th>
+                        <th class=cell">И</th>
+                        <th class="cell">В</th>
+                        <th class="cell">ВО</th>
+                        <th class="cell">ВБ</th>
+                        <th class="cell">ПБ</th>
+                        <th class="cell">ПО</th>
+                        <th class="cell">П</th>
+                        <th class="goals">Ш</th>
+                        <th class="cell">О</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="grid_6 news">
+            <div class="grid_4 news">
                 @foreach($news as $n)
                     @if($n->main)
                         <div class="main">
@@ -88,10 +88,10 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Номер</th>
-                                        <th>Имя</th>
-                                        <th>Голы</th>
-                                        <th>Ассисты</th>
+                                        <th class="num">Номер</th>
+                                        <th class="name">Имя</th>
+                                        <th class="normal">Голы</th>
+                                        <th class="normal">Ассисты</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -117,9 +117,9 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Номер</th>
-                                        <th>Имя</th>
-                                        <th>Голы</th>
+                                        <th class="num">Номер</th>
+                                        <th class="name">Имя</th>
+                                        <th class="normal">Голы</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -144,9 +144,9 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Номер</th>
-                                        <th>Имя</th>
-                                        <th>Ассисты</th>
+                                        <th class="num">Номер</th>
+                                        <th class="name">Имя</th>
+                                        <th class="normal">Ассисты</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -171,10 +171,10 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Номер</th>
-                                        <th>Имя</th>
-                                        <th>Голы</th>
-                                        <th>Ассисты</th>
+                                        <th class="num">Номер</th>
+                                        <th class="name">Имя</th>
+                                        <th class="normal">Голы</th>
+                                        <th class="normal">Ассисты</th>
                                     </tr>
                                     </thead>
                                     <tbody>

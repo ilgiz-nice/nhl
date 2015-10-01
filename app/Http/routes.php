@@ -40,7 +40,10 @@ Route::get('regulations', 'RegulationsController@index');
 /*
  * Импорт .xlsx
  */
-Route::resource('import', 'ImportController');
+Route::get('import', function() {
+    return redirect('manager');
+});
+Route::resource('manager', 'ManagerController');
 /*
  * Игроки
  */

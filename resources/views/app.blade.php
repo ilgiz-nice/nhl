@@ -39,15 +39,14 @@
         <div class="container_12">
             <div class="grid_12">
                 <div class="f_logo">
-                    <a href="index.html">Marathon</a>
+                    <a href="index.html">Ночная хоккейная лига</a>
                 </div>
                 <div class="f_contacts">
-                    <a href="#" class="mail_link"><span class="fa fa-envelope"></span> MAIL@DEMOLINK.ORG</a>
-                    <div class="f_phone"><span class="fa fa-phone"></span>+1 800 559 6580</div>
+                    <a href="#" class="mail_link"><span class="fa fa-envelope"></span> mail@nhl16.ru</a>
+                    <div class="f_phone"><span class="fa fa-phone"></span>+7 (927) 461-66-11</div>
                 </div>
                 <div class="copy">
-                    <span>Marathon &copy; 2014 | <a href="#">Privacy Policy</a></span>
-                    Website designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
+                    Сайт создан интернет-агенством <a href="http://www.mak-web.ru/" rel="nofollow">МАК-ВЕБ</a>
                 </div>
             </div>
             <div class="clear"></div>

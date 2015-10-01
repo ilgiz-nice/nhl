@@ -14,7 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass([
         'app.scss',
-        'backend.scss'
+        'manager.scss'
     ]);
 
      mix.styles([
@@ -29,6 +29,6 @@ elixir(function(mix) {
         'jquery.js',
         'js.js',
         'main.js',
-        'import.js'
+        'manager.js'
     ]);
 });

@@ -27,18 +27,18 @@ ul, li {
   display:block;
   position:absolute;
   top:100px;
-  left:50px;
+  left:600px;
 
   /*Задаём стили для разделов нашего меню*/
   li {
     display: inline-block;
     position: relative;
-    height: 60px;
+    height: 40px;
     font-size: 14px;
     font-family: 'Economica', sans-serif;
     border: 1px solid $light_grey;
     color: $grey;
-    line-height: 60px;
+    line-height: 40px;
     width: 130px;
     text-align: center;
     -webkit-box-sizing: border-box;
@@ -48,7 +48,7 @@ ul, li {
     /*Стили для скрытого выпадающего меню*/
     ul {
       position:absolute;
-      top: 60px;
+      top: 40px;
       left: -1px;
       display:none;
       border: 1px solid $light_grey;
@@ -65,3 +65,14 @@ ul, li {
     }
   }
 }
+
+.shown {
+  display: none;
+  margin-top: 200px;
+  .settings {
+    .subblock {
+      display: none;
+    }
+  }
+}
+

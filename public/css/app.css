@@ -10,6 +10,9 @@ a {
 header {
   padding-top: 0; }
 
+.menu_block {
+  padding: 30px 0 30px 0; }
+
 .menu_block:after {
   left: 43%;
   width: 930px; }
@@ -106,11 +109,23 @@ header {
   margin-bottom: 77px; }
   .main .statistics .bombardier, .main .statistics .sniper, .main .statistics .assist, .main .statistics .penalty {
     width: 555px; }
-    .main .statistics .bombardier .table thead th, .main .statistics .sniper .table thead th, .main .statistics .assist .table thead th, .main .statistics .penalty .table thead th {
-      width: 1%; }
+    .main .statistics .bombardier .table .normal, .main .statistics .sniper .table .normal, .main .statistics .assist .table .normal, .main .statistics .penalty .table .normal {
+      width: 100px; }
+    .main .statistics .bombardier .table .num, .main .statistics .sniper .table .num, .main .statistics .assist .table .num, .main .statistics .penalty .table .num {
+      width: 46px; }
+  .main .statistics .bombardier .table .name, .main .statistics .penalty .table .name {
+    width: 250px; }
+  .main .statistics .sniper .table .name, .main .statistics .assist .table .name {
+    width: 350px; }
 
 .main .tournament .table {
   margin-top: 77px; }
+  .main .tournament .table .normal {
+    width: 59px; }
+  .main .tournament .table .teams {
+    width: 200px; }
+  .main .tournament .table .goals {
+    width: 100px; }
 
 .main .news {
   margin-top: 77px; }
@@ -165,25 +180,25 @@ ul, li {
   display: block;
   position: absolute;
   top: 100px;
-  left: 50px;
+  left: 600px;
   /*Задаём стили для разделов нашего меню*/
   /*Делаем скрытую часть видимой*/ }
   #menu li {
     display: inline-block;
     position: relative;
-    height: 60px;
+    height: 40px;
     font-size: 14px;
     font-family: 'Economica', sans-serif;
     border: 1px solid #c2c2c2;
     color: #908b8b;
-    line-height: 60px;
+    line-height: 40px;
     width: 130px;
     text-align: center;
     box-sizing: border-box;
     /*Стили для скрытого выпадающего меню*/ }
     #menu li ul {
       position: absolute;
-      top: 60px;
+      top: 40px;
       left: -1px;
       display: none;
       border: 1px solid #c2c2c2;
@@ -193,5 +208,11 @@ ul, li {
     color: #FFF; }
     #menu li:hover ul {
       display: block; }
+
+.shown {
+  display: none;
+  margin-top: 200px; }
+  .shown .settings .subblock {
+    display: none; }
 
 /*# sourceMappingURL=app.css.map */

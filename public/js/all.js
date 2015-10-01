@@ -9,6 +9,9 @@ $(document).ready(function() {
         var target = $(this).attr('data-href');
         document.location.href = target;
     });
+    $('a[href=#]').click(function(e) {
+        e.preventDefault();
+    });
 });
 
 $(document).ready(function() {
@@ -24,6 +27,21 @@ $(document).ready(function() {
         var target = $(this).attr('data-timeline');
         $('.games .info .block').hide();
         $('.games .info .block[data-info='+target+']').show();
+    });
+});
+$(document).ready(function() {
+    $('.shown').hide();
+    $('.show').click(function() {
+        var tab = $(this).attr('data-tab');
+        var action = $(this).attr('data-action');
+        $('.'+tab+'.'+action).show();
+    });
+    $('.block .edit').click(function() {
+        var id = $(this).attr('data-id');
+        $('.subblock[data-id='+id+']').show();
+    });
+    $('.subblock input[type=submit]').click(function(e) {
+        e.preventDefault();
     });
 });
 //# sourceMappingURL=all.js.map

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Excel;
 
-class ImportController extends Controller
+class ManagerController extends Controller
 {
     public function index() {
         $teams = Team::Select();
         $matches = Match::Export()->get();
         Team::Select();
-        return view('import/index', compact('teams', 'matches'));
+        return view('manager/index', compact('teams', 'matches'));
     }
 
     /*

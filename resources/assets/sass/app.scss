@@ -13,7 +13,9 @@ a {
 header {
   padding-top: 0;
 }
-
+.menu_block {
+  padding: 30px 0 30px 0;
+}
 .menu_block:after {
   left: 43%;
   width: 930px;
@@ -143,10 +145,25 @@ header {
     .bombardier, .sniper, .assist, .penalty {
       width: 555px;
       .table {
-        thead {
-          th {
-            width: 1%;
-          }
+        .normal {
+          width: 100px;
+        }
+        .num {
+          width: 46px;
+        }
+      }
+    }
+    .bombardier, .penalty {
+      .table {
+        .name {
+          width: 250px;
+        }
+      }
+    }
+    .sniper, .assist {
+      .table {
+        .name {
+          width: 350px;
         }
       }
     }
@@ -155,6 +172,16 @@ header {
   .tournament {
     .table {
       margin-top: 77px;
+
+      .normal {
+        width: 59px;
+      }
+      .teams {
+        width: 200px;
+      }
+      .goals {
+        width: 100px;
+      }
     }
   }
 
