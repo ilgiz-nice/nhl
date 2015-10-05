@@ -1,78 +1,71 @@
-/*
- * BACKEND
-*/
-
-.backend {
-  height: 1200px;
-}
-
-/*
- * Tabs
-*/
-
 $light_grey: #c2c2c2;
 $grey: #908b8b;
 $green: #608b7e;
 $white: #FFF;
 
-/*Обнуляем отступы*/
-ul, li {
-  margin:0;
-  padding:0;
-  list-style-type:none;
-}
-
-/*Задаём параметры блока, содержащего основное меню*/
-#menu {
-  display:block;
-  position:absolute;
-  top:100px;
-  left:600px;
-
-  /*Задаём стили для разделов нашего меню*/
-  li {
-    display: inline-block;
-    position: relative;
-    height: 40px;
-    font-size: 14px;
-    font-family: 'Economica', sans-serif;
-    border: 1px solid $light_grey;
-    color: $grey;
-    line-height: 40px;
-    width: 130px;
+.manager {
+  height: 1200px;
+  .container_12.menu {
+    height: 240px;
+  }
+  .block {
+    height: 500px;
+  }
+  nav {
     text-align: center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  }
 
-    /*Стили для скрытого выпадающего меню*/
-    ul {
-      position:absolute;
-      top: 40px;
-      left: -1px;
-      display:none;
+  #menu {
+    display:block;
+    margin-top: 30px;
+
+    /*Задаём стили для разделов нашего меню*/
+    li {
+      display: inline-block;
+      position: relative;
+      height: 40px;
+      font-size: 14px;
+      font-family: 'Economica', sans-serif;
       border: 1px solid $light_grey;
-      width: 128px;
+      color: $grey;
+      line-height: 40px;
+      width: 130px;
+      text-align: center;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+
+      /*Стили для скрытого выпадающего меню*/
+      ul {
+        position:absolute;
+        top: 40px;
+        left: -1px;
+        display:none;
+        border: 1px solid $light_grey;
+        width: 128px;
+      }
+    }
+
+    /*Делаем скрытую часть видимой*/
+    li:hover {
+      background-color: $green;
+      color: $white;
+      ul {
+        display: block;
+      }
     }
   }
 
-  /*Делаем скрытую часть видимой*/
-  li:hover {
-    background-color: $green;
-    color: $white;
-    ul {
-      display: block;
+  .box {
+    margin-top: 0;
+  }
+
+  .shown {
+    display: none;
+    .settings {
+      .subblock {
+        display: none;
+      }
     }
   }
 }
-
-.shown {
-  display: none;
-  margin-top: 200px;
-  .settings {
-    .subblock {
-      display: none;
-    }
-  }
-}
-

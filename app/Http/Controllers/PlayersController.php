@@ -6,10 +6,48 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Player;
+use Excel;
 
 class PlayersController extends Controller
 {
     public function index() {
         return view('welcome');
+    }
+
+    public function create(Request $request) {
+        Excel::load($request->players, function ($reader) {
+            $obj = $reader->toObject();
+            foreach ($obj[0] as $i) {
+                if (strlen($i->current_team) == 1) {
+                    $friendly = '0' . $i->current_team;
+                } else if (strlen($i->current_team == 2)) {
+                    $friendly = $i->current_team;
+                }
+                if (strlen($i->num) == 1) {
+                    $friendly .= '00' . $i->num;
+                } else if (strlen($i->num) == 2) {
+                    $friendly .= '0' . $i->num;
+                } else if (strlen($i->num) == 3) {
+                    $friendly .= $i->num;
+                }
+                Player::create([
+                    'friendly' => $friendly,
+                    'name' => $i->name,
+                    'current_team' => $i->current_team,
+                    'num' => $i->num,
+                    'height' => $i->height,
+                    'weight' => $i->weight,
+                    'birthday' => $i->birthday,
+                    'role' => $i->role,
+                    'hand' => $i->hand,
+                    'city' => $i->city,
+                    'past_teams' => $i->past_teams,
+                    'photo' => $i->photo
+                ]);
+            }
+        });
+
+        return redirect('/manager');
     }
 }

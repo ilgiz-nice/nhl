@@ -1,0 +1,191 @@
+.main {
+  //Верхняя секция - Игры
+  .games {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+    .timeline {
+      display: inline-flex;
+      .block {
+        cursor: pointer;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #c2c2c2;
+        text-shadow: none;
+        font-size: 24px;
+        color: #8a8687;
+        background: #fff;
+        width: 292.5px;
+        height: 90px;
+        line-height: 45px;
+        text-align: center;
+        font-weight: 400;
+      }
+    }
+  }
+  //Вторая секция - Новости + Турнирная таблица
+  .teaser {
+    height: 455px;
+    width: 100%;
+    display: flex;
+    .main_news { //Новости
+      width: 70%;
+      position: relative;
+      a:hover {
+        background: rgba(0, 0, 0, 0.4);
+      }
+      h3 { //Титул статьи
+        position: absolute;
+        width: 100%;
+        top: 250px;
+        font-size: 48px;
+        line-height: 1.1;
+        padding: 0 30px 0 0;
+        color: #ffffff;
+      }
+      .date { //Дата создания статьи
+        position: absolute;
+        top: 350px;
+        font-size: 14px;
+        color: #ccc;
+      }
+    }
+    .tournament {
+      width: 30%;
+      .table {
+        thead {
+          height: 39px;
+          font-size: 14px;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          font-family: 'Economica', sans-serif;
+
+          th {
+            border: 1px solid #c2c2c2;
+            text-transform: uppercase;
+            color: #908b8b;
+            line-height: 38px;
+            width: 60px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
+          th.team {
+            width: 163px;
+          }
+        }
+
+        tbody {
+          padding: 0;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+          td {
+            border: 1px solid #c2c2c2;
+            text-shadow: none;
+            font-size: 20px;
+            color: #8a8687;
+            background: #fff;
+            height: 100%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 400;
+          }
+
+          tr:hover {
+            td {
+              color: #fff;
+              background: #608b7e;
+            }
+          }
+        }
+      }
+    }
+  }
+  //Вторая секция - Остальные новости
+  .news {
+    height: 150px;
+    display: flex;
+    .block {
+      width: 270px;
+    }
+  }
+  //Третья секция - Статистика
+  .stats {
+
+    .table {
+      thead {
+        height: 39px;
+        font-size: 14px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-family: 'Economica', sans-serif;
+
+        th {
+          border: 1px solid #c2c2c2;
+          text-transform: uppercase;
+          color: #908b8b;
+          line-height: 38px;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+        .normal {
+          width: 100px;
+        }
+        .num {
+          width: 46px;
+        }
+        .bombardier, .penalty {
+          .table {
+            .name {
+              width: 250px;
+            }
+          }
+        }
+        .sniper, .assist {
+          .table {
+            .name {
+              width: 350px;
+            }
+          }
+        }
+      }
+
+      tbody {
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+        td {
+          border: 1px solid #c2c2c2;
+          text-shadow: none;
+          font-size: 20px;
+          color: #8a8687;
+          background: #fff;
+          height: 100%;
+          line-height: 40px;
+          text-align: center;
+          font-weight: 400;
+        }
+
+        tr:hover {
+          td {
+            color: #fff;
+            background: #608b7e;
+          }
+        }
+      }
+    }
+  }
+  //Нижняя секция - Календарь
+  .calendar {
+
+  }
+}

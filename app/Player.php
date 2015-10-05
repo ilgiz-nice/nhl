@@ -11,6 +11,7 @@ class Player extends Model
         'friendly',
         'name',
         'current_team',
+        'num',
         'height',
         'weight',
         'birthday',
@@ -84,7 +85,7 @@ class Player extends Model
             }
         }
 
-        if (count($sort) >= 0) {
+        if (count($sort) > 0) {
             usort($sort['goal_assist'], function($a, $b) {
                 return $b['points'] - $a['points'];
             });

@@ -2,11 +2,6 @@ a {
   text-decoration: none;
   color: black; }
 
-.import-page {
-  height: 1700px; }
-  .import-page input {
-    padding: 6px 23px 7px; }
-
 header {
   padding-top: 0; }
 
@@ -19,41 +14,6 @@ header {
 
 .link {
   cursor: pointer; }
-
-.main .table thead {
-  height: 39px;
-  font-size: 14px;
-  box-sizing: border-box;
-  font-family: 'Economica', sans-serif; }
-  .main .table thead th {
-    border: 1px solid #c2c2c2;
-    text-transform: uppercase;
-    color: #908b8b;
-    line-height: 38px;
-    width: 47.5px;
-    box-sizing: border-box; }
-  .main .table thead th:first-child {
-    width: auto; }
-  .main .table thead th:nth-child(9) {
-    width: auto; }
-
-.main .table tbody {
-  cursor: pointer;
-  padding: 0;
-  box-sizing: border-box; }
-  .main .table tbody td {
-    border: 1px solid #c2c2c2;
-    text-shadow: none;
-    font-size: 20px;
-    color: #8a8687;
-    background: #fff;
-    height: 100%;
-    line-height: 40px;
-    text-align: center;
-    font-weight: 400; }
-  .main .table tbody tr:hover td {
-    color: #fff;
-    background: #608b7e; }
 
 .main .games {
   margin-left: 1vw;
@@ -76,143 +36,154 @@ header {
       height: 90px;
       line-height: 45px;
       text-align: center;
-      font-weight: 400;
-      background: url(/images/nhl.png) no-repeat;
-      background-size: cover;
-      background-position: 50% 50%; }
-    .main .games .timeline .active {
-      color: #FFF;
-      background-color: #608b7e; }
-  .main .games .info {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex; }
-    .main .games .info .block {
-      cursor: pointer;
-      padding: 0;
+      font-weight: 400; }
+
+.main .teaser {
+  height: 455px;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .main .teaser .main_news {
+    width: 70%;
+    position: relative; }
+    .main .teaser .main_news a:hover {
+      background: rgba(0, 0, 0, 0.4); }
+    .main .teaser .main_news h3 {
+      position: absolute;
+      width: 100%;
+      top: 250px;
+      font-size: 48px;
+      line-height: 1.1;
+      padding: 0 30px 0 0;
+      color: #ffffff; }
+    .main .teaser .main_news .date {
+      position: absolute;
+      top: 350px;
+      font-size: 14px;
+      color: #ccc; }
+  .main .teaser .tournament {
+    width: 30%; }
+    .main .teaser .tournament .table thead {
+      height: 39px;
+      font-size: 14px;
       box-sizing: border-box;
-      border: 1px solid #c2c2c2;
-      text-shadow: none;
-      font-size: 24px;
-      color: #8a8687;
-      background: #fff;
-      width: 98vw;
-      height: 270px;
-      line-height: 90px;
-      text-align: center;
-      font-weight: 400;
-      background: url(/images/nhl.png) no-repeat;
-      background-size: cover;
-      background-position: 50% 50%; }
-
-.main .statistics {
-  margin-bottom: 77px; }
-  .main .statistics .bombardier, .main .statistics .sniper, .main .statistics .assist, .main .statistics .penalty {
-    width: 555px; }
-    .main .statistics .bombardier .table .normal, .main .statistics .sniper .table .normal, .main .statistics .assist .table .normal, .main .statistics .penalty .table .normal {
-      width: 100px; }
-    .main .statistics .bombardier .table .num, .main .statistics .sniper .table .num, .main .statistics .assist .table .num, .main .statistics .penalty .table .num {
-      width: 46px; }
-  .main .statistics .bombardier .table .name, .main .statistics .penalty .table .name {
-    width: 250px; }
-  .main .statistics .sniper .table .name, .main .statistics .assist .table .name {
-    width: 350px; }
-
-.main .tournament .table {
-  margin-top: 77px; }
-  .main .tournament .table .normal {
-    width: 59px; }
-  .main .tournament .table .teams {
-    width: 200px; }
-  .main .tournament .table .goals {
-    width: 100px; }
+      font-family: 'Economica', sans-serif; }
+      .main .teaser .tournament .table thead th {
+        border: 1px solid #c2c2c2;
+        text-transform: uppercase;
+        color: #908b8b;
+        line-height: 38px;
+        width: 60px;
+        box-sizing: border-box; }
+      .main .teaser .tournament .table thead th.team {
+        width: 163px; }
+    .main .teaser .tournament .table tbody {
+      padding: 0;
+      box-sizing: border-box; }
+      .main .teaser .tournament .table tbody td {
+        border: 1px solid #c2c2c2;
+        text-shadow: none;
+        font-size: 20px;
+        color: #8a8687;
+        background: #fff;
+        height: 100%;
+        line-height: 40px;
+        text-align: center;
+        font-weight: 400; }
+      .main .teaser .tournament .table tbody tr:hover td {
+        color: #fff;
+        background: #608b7e; }
 
 .main .news {
-  margin-top: 77px; }
-  .main .news .main {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex; }
-    .main .news .main .left, .main .news .main .right {
-      width: 50%;
-      height: 195px; }
-      .main .news .main .left .title, .main .news .main .right .title {
-        height: 50px;
-        line-height: 50px; }
-      .main .news .main .left .description, .main .news .main .right .description {
-        font-size: 20px;
-        color: #c0c0c0; }
+  height: 150px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
   .main .news .block {
-    width: 100%; }
-    .main .news .block .title, .main .news .block .date {
-      display: inline-block; }
-    .main .news .block .title {
-      width: 70%; }
-    .main .news .block .date {
-      width: 30%;
-      text-align: left; }
-  .main .news .title, .main .news .date {
-    font-weight: bold;
-    font-size: 24px;
-    height: 30px;
-    line-height: 30px; }
-  .main .news .date {
-    color: #c0c0c0; }
+    width: 270px; }
+
+.main .stats .table thead {
+  height: 39px;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: 'Economica', sans-serif; }
+  .main .stats .table thead th {
+    border: 1px solid #c2c2c2;
+    text-transform: uppercase;
+    color: #908b8b;
+    line-height: 38px;
+    box-sizing: border-box; }
+  .main .stats .table thead .normal {
+    width: 100px; }
+  .main .stats .table thead .num {
+    width: 46px; }
+  .main .stats .table thead .bombardier .table .name, .main .stats .table thead .penalty .table .name {
+    width: 250px; }
+  .main .stats .table thead .sniper .table .name, .main .stats .table thead .assist .table .name {
+    width: 350px; }
+
+.main .stats .table tbody {
+  padding: 0;
+  box-sizing: border-box; }
+  .main .stats .table tbody td {
+    border: 1px solid #c2c2c2;
+    text-shadow: none;
+    font-size: 20px;
+    color: #8a8687;
+    background: #fff;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 400; }
+  .main .stats .table tbody tr:hover td {
+    color: #fff;
+    background: #608b7e; }
 
 @charset "UTF-8";
-/*
- * BACKEND
-*/
-.backend {
+.manager {
   height: 1200px; }
-
-/*
- * Tabs
-*/
-/*Обнуляем отступы*/
-ul, li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none; }
-
-/*Задаём параметры блока, содержащего основное меню*/
-#menu {
-  display: block;
-  position: absolute;
-  top: 100px;
-  left: 600px;
-  /*Задаём стили для разделов нашего меню*/
-  /*Делаем скрытую часть видимой*/ }
-  #menu li {
-    display: inline-block;
-    position: relative;
-    height: 40px;
-    font-size: 14px;
-    font-family: 'Economica', sans-serif;
-    border: 1px solid #c2c2c2;
-    color: #908b8b;
-    line-height: 40px;
-    width: 130px;
-    text-align: center;
-    box-sizing: border-box;
-    /*Стили для скрытого выпадающего меню*/ }
-    #menu li ul {
-      position: absolute;
-      top: 40px;
-      left: -1px;
-      display: none;
+  .manager .container_12.menu {
+    height: 240px; }
+  .manager .block {
+    height: 500px; }
+  .manager nav {
+    text-align: center; }
+  .manager #menu {
+    display: block;
+    margin-top: 30px;
+    /*Задаём стили для разделов нашего меню*/
+    /*Делаем скрытую часть видимой*/ }
+    .manager #menu li {
+      display: inline-block;
+      position: relative;
+      height: 40px;
+      font-size: 14px;
+      font-family: 'Economica', sans-serif;
       border: 1px solid #c2c2c2;
-      width: 128px; }
-  #menu li:hover {
-    background-color: #608b7e;
-    color: #FFF; }
-    #menu li:hover ul {
-      display: block; }
-
-.shown {
-  display: none;
-  margin-top: 200px; }
-  .shown .settings .subblock {
+      color: #908b8b;
+      line-height: 40px;
+      width: 130px;
+      text-align: center;
+      box-sizing: border-box;
+      /*Стили для скрытого выпадающего меню*/ }
+      .manager #menu li ul {
+        position: absolute;
+        top: 40px;
+        left: -1px;
+        display: none;
+        border: 1px solid #c2c2c2;
+        width: 128px; }
+    .manager #menu li:hover {
+      background-color: #608b7e;
+      color: #FFF; }
+      .manager #menu li:hover ul {
+        display: block; }
+  .manager .box {
+    margin-top: 0; }
+  .manager .shown {
     display: none; }
+    .manager .shown .settings .subblock {
+      display: none; }
 
 /*# sourceMappingURL=app.css.map */

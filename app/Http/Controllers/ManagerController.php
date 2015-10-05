@@ -141,9 +141,8 @@ class ManagerController extends Controller
      */
 
     public function export($array) {
-        $filename = $array['home_id'] . '_vs_' . $array['guest_id'];
-        /* @var LaravelExcelWriter $file */
-        $file = Excel::create($filename, function($excel) use($array) {
+        $filename = $array['home'] . '_vs_' . $array['guest'];
+        Excel::create($filename, function($excel) use($array) {
             $excel->sheet('Матч', function($sheet) use($array) {
                 $sheet->row(1, array(
                     'id матча', 'Состав домашней команды', 'Состав гостевой команды', 'Номер игры', 'Стадия', 'Статус',
@@ -169,9 +168,6 @@ class ManagerController extends Controller
             });
 
         })->download('xlsx');
-            return response()->download();
-
-        dump($filename);
     }
 
     /*
@@ -214,7 +210,6 @@ class ManagerController extends Controller
                 } else if (strlen($i->num) == 3) {
                     $friendly .= $i->num;
                 }
-                dump($friendly);
                 Player::create([
                     'friendly' => $friendly,
                     'name' => $i->name,

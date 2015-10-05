@@ -3,6 +3,7 @@ $(document).ready(function() {
     $('.show').click(function() {
         var tab = $(this).attr('data-tab');
         var action = $(this).attr('data-action');
+        $('.shown').hide();
         $('.'+tab+'.'+action).show();
     });
     $('.block .edit').click(function() {

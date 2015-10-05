@@ -19,6 +19,11 @@ Route::get('/', 'MainController@index');
  * Новости (1)
  */
 Route::get('news', 'NewsController@index');
+Route::get('/news/{{id}}', 'NewsController@show');
+Route::post( '/news/create', array(
+    'as' => 'news.create',
+    'uses' => 'NewsController@create'
+) );
 /*
  * Календарь/Результат (2)
  */
@@ -28,6 +33,14 @@ Route::get('calendar', 'CalendarController@index');
  */
 Route::get('/teams', 'TeamsController@index');
 Route::get('/teams/{{id}}', 'TeamsController@show');
+Route::post('/teams/create', array(
+    'as' => 'teams.create',
+    'uses' => 'TeamsController@create'
+));
+Route::get('/teams/export', array(
+    'as' => 'teams.export',
+    'uses' => 'TeamsController@export'
+));
 /*
  * Статистика (4)
  */
@@ -49,3 +62,18 @@ Route::resource('manager', 'ManagerController');
  */
 Route::get('/players', 'PlayersController@index');
 Route::get('/players/{{id}}', 'PlayersController@show');
+Route::post( '/players/create', array(
+    'as' => 'players.create',
+    'uses' => 'PlayersController@create'
+));
+Route::get( '/players/export', array(
+    'as' => 'players.export',
+    'uses' => 'PlayersController@export'
+));
+/*
+ * Тренеры
+ */
+Route::post( '/coach/create', array(
+    'as' => 'coach.create',
+    'uses' => 'CoachController@create'
+));

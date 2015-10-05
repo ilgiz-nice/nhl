@@ -14,4 +14,8 @@ class News extends Model
         'photo',
         'main'
     ];
+
+    public function scopeMainNews($query) {
+        $query->where('main', 1);
+    }
 }

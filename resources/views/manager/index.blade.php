@@ -5,41 +5,48 @@
 @stop
 
 @section('content')
-    <div class="backend">
-        <ul id="menu">
-            <li><a href="#">Матч</a>
-                <ul>
-                    <li class="show" data-tab="match" data-action="create"><a href="#">Создание</a></li>
-                    <li class="show" data-tab="match" data-action="export"><a href="#">Экспорт</a></li>
-                    <li class="show" data-tab="match" data-action="import"><a href="#">Импорт</a></li>
-                    <li class="show" data-tab="match" data-action="settings"><a href="#">Настройки</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Новости</a>
-                <ul>
-                    <li class="show" data-tab="news" data-action="settings"><a href="#">Настройки</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Игроки</a>
-                <ul>
-                    <li class="show" data-tab="players" data-action="export"><a href="#">Экспорт</a></li>
-                    <li class="show" data-tab="players" data-action="import"><a href="#">Импорт</a></li>
-                    <li class="show" data-tab="players" data-action="settings"><a href="#">Настройки</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Команды</a>
-                <ul>
-                    <li class="show" data-tab="teams" data-action="export"><a href="#">Экспорт</a></li>
-                    <li class="show" data-tab="teams" data-action="import"><a href="#">Импорт</a></li>
-                    <li class="show" data-tab="teams" data-action="settings"><a href="#">Настройки</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Сезоны</a>
-                <ul>
-                    <li class="show" data-tab="seasons" data-action="settings"><a href="#">Настройки</a></li>
-                </ul>
-            </li>
-        </ul>
+    <div class="manager">
+        <div class="container_12 menu">
+            <div class="grid_12">
+                <nav>
+                    <ul id="menu">
+                        <li><a href="#">Матч</a>
+                            <ul>
+                                <li class="show" data-tab="match" data-action="create"><a href="#">Создание</a></li>
+                                <li class="show" data-tab="match" data-action="export"><a href="#">Экспорт</a></li>
+                                <li class="show" data-tab="match" data-action="import"><a href="#">Импорт</a></li>
+                                <li class="show" data-tab="match" data-action="settings"><a href="#">Настройки</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Новости</a>
+                            <ul>
+                                <li class="show" data-tab="news" data-action="settings"><a href="#">Настройки</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Игроки</a>
+                            <ul>
+                                <li class="show" data-tab="players" data-action="export"><a href="#">Экспорт</a></li>
+                                <li class="show" data-tab="players" data-action="import"><a href="#">Импорт</a></li>
+                                <li class="show" data-tab="players" data-action="settings"><a href="#">Настройки</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Команды</a>
+                            <ul>
+                                <li class="show" data-tab="teams" data-action="export"><a href="#">Экспорт</a></li>
+                                <li class="show" data-tab="teams" data-action="import"><a href="#">Импорт</a></li>
+                                <li class="show" data-tab="teams" data-action="settings"><a href="#">Настройки</a></li>
+                                <li class="show" data-tab="teams" data-action="coach"><a href="#">Тренеры</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Сезоны</a>
+                            <ul>
+                                <li class="show" data-tab="seasons" data-action="settings"><a href="#">Настройки</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <div class="block">
             <div class="shown match create">
                 <div class="container_12">
@@ -209,12 +216,70 @@
                     @endforeach
                 </div>
             </div>
-            <div class="shown news settings"></div>
+            <div class="shown news settings">
+                <div class="container_12">
+                    {!! Form::open(['route' => 'news.create', 'method' => 'post', 'files' => true]) !!}
+
+                    {!! Form::label('title', 'Название:' ) !!}
+                    {!! Form::text('title', '', (['required' => true])) !!}
+
+                    {!! Form::label('description', 'Содержание:' ) !!}
+                    {!! Form::text('description', '', (['required' => true])) !!}
+
+                    {!! Form::input('file', 'file', '', ['required' => true]) !!}
+
+                    {!! Form::submit( 'Добавить новость') !!}
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
             <div class="shown players export"></div>
-            <div class="shown players import"></div>
+            <div class="shown players import">
+                <div class="container_12">
+                    {!! Form::open(['route' => 'players.create', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+
+
+                    {!! Form::label('players', 'Импорт команд') !!}
+                    {!! Form::input('file', 'players', '', ['accept' => 'xlsx', 'required' => true]) !!}
+
+                    {!! Form::submit('Добавить игроков', ['class' => 'btn']) !!}
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
             <div class="shown players settings"></div>
             <div class="shown teams export"></div>
-            <div class="shown teams import"></div>
+            <div class="shown teams import">
+                <div class="container_12">
+                    {!! Form::open(['route' => 'teams.create', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+
+
+                    {!! Form::label('teams', 'Импорт команд') !!}
+                    {!! Form::input('file', 'teams', '', ['accept' => 'xlsx', 'required' => true]) !!}
+
+                    {!! Form::submit('Добавить команды', ['class' => 'btn']) !!}
+
+                    {!! Form::close() !!}
+                </div>
+            </div> <!-- /teams/import -->
+            <div class="shown teams coach">
+                <div class="container_12">
+                    {!! Form::open(['route' => 'coach.create', 'method' => 'post', 'files' => true]) !!}
+
+                    {!! Form::label('name', 'Имя') !!}
+                    {!! Form::text('name') !!}
+
+                    {!! Form::label('birthday', 'Дата рождения') !!}
+                    {!! Form::input('date', 'birthday', Carbon::now()) !!}
+
+                    {!! Form::label('photo', 'Фото') !!}
+                    {!! Form::input('file', 'photo') !!}
+
+                    {!! Form::submit('Добавить тренера') !!}
+
+                    {!! Form::close() !!}
+                </div>
+            </div> <!-- /teams/coach -->
             <div class="shown teams settings"></div>
             <div class="shown seasons settings"></div>
         </div>
