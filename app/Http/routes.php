@@ -77,3 +77,26 @@ Route::post( '/coach/create', array(
     'as' => 'coach.create',
     'uses' => 'CoachController@create'
 ));
+/*
+ * Сезоны
+ */
+Route::post( '/seasons/create', array(
+    'as' => 'seasons.create',
+    'uses' => 'SeasonsController@create'
+));
+/*
+ * Матчи
+ */
+Route::get('/matches/{id}', 'MatchesController@show');
+Route::post('/matches/create', array(
+    'as' => 'matches.create',
+    'uses' => 'MatchesController@create'
+));
+Route::post('/matches/export', array(
+    'as' => 'matches.export',
+    'uses' => 'MatchesController@export'
+));
+Route::post('/matches/result', array(
+    'as' => 'matches.result',
+    'uses' => 'MatchesController@result'
+));

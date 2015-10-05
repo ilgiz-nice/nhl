@@ -15,7 +15,8 @@ elixir(function(mix) {
     mix.sass([
         'app.scss',
         'main.scss',
-        'manager.scss'
+        'manager.scss',
+        'matches.scss'
     ]);
 
      mix.styles([
@@ -30,6 +31,7 @@ elixir(function(mix) {
         'jquery.js',
         'js.js',
         'main.js',
-        'manager.js'
+        'manager.js',
+        'matches.js'
     ]);
 });

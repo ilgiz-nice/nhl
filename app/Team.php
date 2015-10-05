@@ -8,10 +8,12 @@ class Team extends Model
 {
     protected $fillable = [
         'name',
+        'short',
         'description',
         'coach_id',
         'logo',
-        'photo'
+        'photo',
+        'city'
     ];
 
     public function scopeSelect($query) {

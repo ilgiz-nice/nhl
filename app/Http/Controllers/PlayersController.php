@@ -50,4 +50,13 @@ class PlayersController extends Controller
 
         return redirect('/manager');
     }
+
+    public function export(Request $request) {
+        Excel::create('Игроки', function($excel) {
+            $excel->sheet('Матч', function($sheet) {
+                $sheet->fromModel(Player::all());
+            });
+
+        })->download('xlsx');
+    }
 }

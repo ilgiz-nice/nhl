@@ -28,10 +28,12 @@ class TeamsController extends Controller
             foreach ($obj as $i) {
                 Team::create([
                     'name'          => $i->name,
+                    'short'         => $i->short,
                     'description'   => $i->description,
                     'coach_id'      => $i->coach_id,
                     'logo'          => $i->logo,
-                    'photo'         => $i->photo
+                    'photo'         => $i->photo,
+                    'city'          => $i->city
                 ]);
             }
         });
@@ -42,7 +44,7 @@ class TeamsController extends Controller
     public function export() {
         Excel::create('Команды', function($excel) {
             $excel->sheet('Матч', function($sheet) {
-                $sheet->fromModel(Teams::all());
+                $sheet->fromModel(Team::all());
             });
 
         })->download('xlsx');

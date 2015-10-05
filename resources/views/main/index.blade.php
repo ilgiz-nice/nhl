@@ -8,12 +8,12 @@
     <div class="main">
         <div class="games">
             @foreach($games as $g)
-                <div class="block" data-timeline="{{ $g['id'] }}">
+                <div class="block link" data-href="/matches/{{ $g['id'] }}">
                     <div class="participants">{{ $g['home'] }} {{ $g['home_goals'] }}-{{ $g['guest_goals'] }} {{ $g['guest'] }}</div>
                     <div class="date">{{ $g['date'] }}</div>
                 </div>
             @endforeach
-        </div> <!-- /games -->>
+        </div> <!-- /games -->
         <div class="teaser">
             <div class="main_news" style="background: url('{!! $main_news[0]->photo !!}') 50% 50% no-repeat; background-size:cover;">
                 <a href="/news/{{$main_news[0]->id}}">

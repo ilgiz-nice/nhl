@@ -180,4 +180,12 @@ class Match extends Model
 
         return $output;
     }
+
+    public function scopeMatchInfo($query, $id) {
+        $query->select('match.*', 'home.name as home', 'guest.name as guest', 'home.logo as home_logo', 'guest.logo as guest_logo',
+            'home.city as home_city', 'guest.city as guest_city')
+            ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
+            ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
+            ->where('match.id', $id);;
+    }
 }

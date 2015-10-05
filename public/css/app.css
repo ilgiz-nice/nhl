@@ -15,28 +15,36 @@ header {
 .link {
   cursor: pointer; }
 
+footer {
+  background: #608b7e;
+  padding-top: 20px;
+  margin-top: 50px; }
+
 .main .games {
-  margin-left: 1vw;
-  margin-right: 1vw;
-  text-align: center; }
-  .main .games .timeline {
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex; }
-    .main .games .timeline .block {
-      cursor: pointer;
-      padding: 0;
-      box-sizing: border-box;
-      border: 1px solid #c2c2c2;
-      text-shadow: none;
-      font-size: 24px;
-      color: #8a8687;
-      background: #fff;
-      width: 292.5px;
-      height: 90px;
-      line-height: 45px;
-      text-align: center;
-      font-weight: 400; }
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .main .games .block {
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid #c2c2c2;
+    text-shadow: none;
+    font-size: 24px;
+    color: #8a8687;
+    background: #fff;
+    width: 292.5px;
+    height: 90px;
+    line-height: 45px;
+    text-align: center;
+    font-weight: 400; }
+    .main .games .block .participants {
+      line-height: 60px; }
+    .main .games .block .date {
+      line-height: 30px; }
 
 .main .teaser {
   height: 455px;
@@ -73,11 +81,11 @@ header {
         border: 1px solid #c2c2c2;
         text-transform: uppercase;
         color: #908b8b;
-        line-height: 38px;
-        width: 60px;
+        line-height: 39px;
+        width: 3%;
         box-sizing: border-box; }
       .main .teaser .tournament .table thead th.team {
-        width: 163px; }
+        width: 18%; }
     .main .teaser .tournament .table tbody {
       padding: 0;
       box-sizing: border-box; }
@@ -88,7 +96,7 @@ header {
         color: #8a8687;
         background: #fff;
         height: 100%;
-        line-height: 40px;
+        line-height: 45px;
         text-align: center;
         font-weight: 400; }
       .main .teaser .tournament .table tbody tr:hover td {
@@ -101,7 +109,7 @@ header {
   display: -ms-flexbox;
   display: flex; }
   .main .news .block {
-    width: 270px; }
+    width: 20%; }
 
 .main .stats .table thead {
   height: 39px;
@@ -117,11 +125,7 @@ header {
   .main .stats .table thead .normal {
     width: 100px; }
   .main .stats .table thead .num {
-    width: 46px; }
-  .main .stats .table thead .bombardier .table .name, .main .stats .table thead .penalty .table .name {
-    width: 250px; }
-  .main .stats .table thead .sniper .table .name, .main .stats .table thead .assist .table .name {
-    width: 350px; }
+    width: 70px; }
 
 .main .stats .table tbody {
   padding: 0;
@@ -139,6 +143,12 @@ header {
   .main .stats .table tbody tr:hover td {
     color: #fff;
     background: #608b7e; }
+
+.main .stats .bombardier .name, .main .stats .penalty .name {
+  width: 241px; }
+
+.main .stats .sniper .name, .main .stats .assist .name {
+  width: 341px; }
 
 @charset "UTF-8";
 .manager {
@@ -185,5 +195,118 @@ header {
     display: none; }
     .manager .shown .settings .subblock {
       display: none; }
+
+.matches .match {
+  height: 500px;
+  text-align: center;
+  overflow: hidden;
+  background-size: cover;
+  background: url("/images/stadium.png") 50% 50%;
+  color: #fff; }
+  .matches .match .center {
+    width: 20%;
+    margin-top: 150px; }
+    .matches .match .center .time {
+      text-align: center;
+      font-size: 13px; }
+    .matches .match .center h3 {
+      font-size: 72px;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 15px; }
+  .matches .match .left, .matches .match .center, .matches .match .right {
+    float: left; }
+  .matches .match .left, .matches .match .right {
+    width: 40%;
+    margin-top: 90px;
+    margin-bottom: 80px; }
+    .matches .match .left .img, .matches .match .right .img {
+      margin-bottom: 30px; }
+      .matches .match .left .img img, .matches .match .right .img img {
+        width: 200px;
+        height: 200px; }
+
+.matches .content {
+  width: 100%;
+  background: #fff;
+  padding: 30px 3.5%;
+  overflow: hidden; }
+  .matches .content .block h2 {
+    float: left;
+    position: relative;
+    margin: 0 2em -20px 0;
+    z-index: 2;
+    padding-top: 0; }
+  .matches .content .block .tabs {
+    max-width: 100%;
+    margin: 40px 0 0 0;
+    float: left;
+    z-index: 1; }
+    .matches .content .block .tabs .nav {
+      display: table;
+      white-space: nowrap;
+      padding: 0 0 30px 0; }
+      .matches .content .block .tabs .nav b {
+        font: 14px 'latobold';
+        padding: 0 1em 0 0;
+        display: table-cell;
+        cursor: pointer;
+        color: #02a7fd;
+        transition-duration: 0.25s; }
+      .matches .content .block .tabs .nav b:hover {
+        color: #57ccfd; }
+      .matches .content .block .tabs .nav b:after {
+        background: transparent;
+        bottom: -30px;
+        clear: both;
+        content: "";
+        display: block;
+        height: 1px;
+        position: relative;
+        width: 100%;
+        transition-duration: 0.25s;
+        z-index: 1; }
+      .matches .content .block .tabs .nav b.active {
+        color: #000;
+        cursor: default; }
+      .matches .content .block .tabs .nav b.active:after {
+        background: #000; }
+  .matches .content .block:after {
+    position: relative;
+    clear: both;
+    display: block;
+    bottom: 1px;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #d7e6ee; }
+  .matches .content .content .header {
+    overflow: hidden;
+    margin-bottom: 20px;
+    margin-top: 20px; }
+    .matches .content .content .header .subname {
+      text-align: center;
+      font-family: 'latoblack';
+      font-size: 24px;
+      margin-bottom: 0;
+      overflow: hidden;
+      margin-top: 35px; }
+    .matches .content .content .header .left {
+      float: left;
+      text-align: left; }
+    .matches .content .content .header .right {
+      float: right;
+      text-align: right; }
+    .matches .content .content .header .left .team .img, .matches .content .content .header .right .team .img {
+      width: 80px; }
+    .matches .content .content .header .left .team .info, .matches .content .content .header .right .team .info {
+      margin-left: 20px; }
+      .matches .content .content .header .left .team .info h3, .matches .content .content .header .right .team .info h3 {
+        font-size: 36px;
+        margin-bottom: 5px;
+        font-family: 'latoblack';
+        line-height: 1; }
+      .matches .content .content .header .left .team .info .city, .matches .content .content .header .right .team .info .city {
+        color: #a3a3a3; }
 
 /*# sourceMappingURL=app.css.map */

@@ -46,4 +46,10 @@ $(document).ready(function() {
 
     });
 });
+$(document).ready(function() {
+    $('.matchTab').click(function() {
+        $('.matchTab').removeClass('active');
+        $(this).addClass('active');
+    })
+})
 //# sourceMappingURL=all.js.map

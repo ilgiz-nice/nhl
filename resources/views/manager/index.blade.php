@@ -55,9 +55,7 @@
                             <div class="box_title">Создание матча</div>
                             <div class="box_bot">
                                 <div class="maxheight">
-                                    {!! Form::open(['url' => '/import']) !!}
-
-                                    {!! Form::hidden('action', 'match') !!}
+                                    {!! Form::open(['route' => 'matches.create', 'method' => 'post']) !!}
 
                                     {!! Form::label('num', 'Номер игры') !!}
                                     {!! Form::input('number', 'num', 0, ['min' => '0']) !!}
@@ -76,6 +74,9 @@
 
                                     {!! Form::label('guest', 'Гостевая команда') !!}
                                     {!! Form::select('guest', $teams) !!}
+
+                                    {!! Form::label('status', 'Статус матча') !!}
+                                    {!! Form::select('status', ['Ожидается' => 'Ожидается', 'Завершен' => 'Завершен']) !!}
 
                                     {!! Form::submit('Добавить', ['class' => 'btn']) !!}
 
@@ -111,7 +112,7 @@
                                                 <td>{{ $m->home }}</td>
                                                 <td>{{ $m->guest }}</td>
                                                 <td>
-                                                    {!! Form::open() !!}
+                                                    {!! Form::open(['route' => 'matches.export', 'method' => 'post']) !!}
 
                                                     {!! Form::hidden('action', 'export') !!}
                                                     {!! Form::hidden('id', $m->id) !!}
@@ -146,9 +147,7 @@
                             <div class="box_title">Импорт</div>
                             <div class="box_bot">
                                 <div class="maxheight">
-                                    {!! Form::open(['url' => '/import', 'enctype' => 'multipart/form-data']) !!}
-
-                                    {!! Form::hidden('action', 'result') !!}
+                                    {!! Form::open(['route' => 'matches.result', 'method' => 'post', 'files' => true]) !!}
 
                                     {!! Form::label('result', 'Результаты матча') !!}
                                     {!! Form::input('file', 'result', '', ['accept' => 'xlsx']) !!}
@@ -233,7 +232,13 @@
                     {!! Form::close() !!}
                 </div>
             </div>
-            <div class="shown players export"></div>
+            <div class="shown players export">
+                {!! Form::open(['route' => 'players.export', 'method' => 'get']) !!}
+
+                {!! Form::submit('Экспорт игроков') !!}
+
+                {!! Form::close() !!}
+            </div>
             <div class="shown players import">
                 <div class="container_12">
                     {!! Form::open(['route' => 'players.create', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
@@ -248,7 +253,13 @@
                 </div>
             </div>
             <div class="shown players settings"></div>
-            <div class="shown teams export"></div>
+            <div class="shown teams export">
+                {!! Form::open(['route' => 'teams.export', 'method' => 'get']) !!}
+
+                {!! Form::submit('Экспорт команд') !!}
+
+                {!! Form::close() !!}
+            </div>
             <div class="shown teams import">
                 <div class="container_12">
                     {!! Form::open(['route' => 'teams.create', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
@@ -281,7 +292,16 @@
                 </div>
             </div> <!-- /teams/coach -->
             <div class="shown teams settings"></div>
-            <div class="shown seasons settings"></div>
+            <div class="shown seasons settings">
+                {!! Form::open(['route' => 'seasons.create', 'method' => 'post']) !!}
+
+                {!! Form::label('season', 'Сезон:') !!}
+                {!! Form::text('season', '', ['pattern' => '[0-9]{2}\-[0-9]{2}', 'required' => true]) !!}
+
+                {!! Form::submit('Добавить сезон') !!}
+
+                {!! Form::close() !!}
+            </div>
         </div>
     </div>
 @stop

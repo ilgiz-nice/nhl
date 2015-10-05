@@ -1,27 +1,29 @@
 .main {
   //Верхняя секция - Игры
   .games {
-    margin-left: 1vw;
-    margin-right: 1vw;
-    text-align: center;
-    .timeline {
-      display: inline-flex;
-      .block {
-        cursor: pointer;
-        padding: 0;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        border: 1px solid #c2c2c2;
-        text-shadow: none;
-        font-size: 24px;
-        color: #8a8687;
-        background: #fff;
-        width: 292.5px;
-        height: 90px;
-        line-height: 45px;
-        text-align: center;
-        font-weight: 400;
+    display: flex;
+    justify-content: center;
+    .block {
+      cursor: pointer;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid #c2c2c2;
+      text-shadow: none;
+      font-size: 24px;
+      color: #8a8687;
+      background: #fff;
+      width: 292.5px;
+      height: 90px;
+      line-height: 45px;
+      text-align: center;
+      font-weight: 400;
+      .participants {
+        line-height: 60px;
+      }
+      .date {
+        line-height: 30px;
       }
     }
   }
@@ -67,14 +69,14 @@
             border: 1px solid #c2c2c2;
             text-transform: uppercase;
             color: #908b8b;
-            line-height: 38px;
-            width: 60px;
+            line-height: 39px;
+            width: 3%;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
           }
           th.team {
-            width: 163px;
+            width: 18%;
           }
         }
 
@@ -91,7 +93,7 @@
             color: #8a8687;
             background: #fff;
             height: 100%;
-            line-height: 40px;
+            line-height: 45px;
             text-align: center;
             font-weight: 400;
           }
@@ -111,7 +113,7 @@
     height: 150px;
     display: flex;
     .block {
-      width: 270px;
+      width: 20%;
     }
   }
   //Третья секция - Статистика
@@ -139,21 +141,7 @@
           width: 100px;
         }
         .num {
-          width: 46px;
-        }
-        .bombardier, .penalty {
-          .table {
-            .name {
-              width: 250px;
-            }
-          }
-        }
-        .sniper, .assist {
-          .table {
-            .name {
-              width: 350px;
-            }
-          }
+          width: 70px;
         }
       }
 
@@ -181,6 +169,17 @@
             background: #608b7e;
           }
         }
+      }
+    }
+
+    .bombardier, .penalty {
+      .name {
+        width: 241px;
+      }
+    }
+    .sniper, .assist {
+      .name {
+        width: 341px;
       }
     }
   }

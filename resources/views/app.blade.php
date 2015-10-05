@@ -6,8 +6,8 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="icon" href="images/favicon.ico">
     <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/app.css">
+    {!! HTML::style('css/all.css') !!}
+    {!! HTML::style('css/app.css') !!}
 </head>
 <body class="page1" id="top">
 <div class="main">
@@ -52,6 +52,6 @@
             <div class="clear"></div>
         </div>
     </footer>
-    <script src="js/all.js"></script>
+    {!! HTML::script('js/all.js') !!}
 </body>
 </html>
