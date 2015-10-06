@@ -309,4 +309,49 @@ footer {
       .matches .content .content .header .left .team .info .city, .matches .content .content .header .right .team .info .city {
         color: #a3a3a3; }
 
+.teams li {
+  width: 20%;
+  margin: 0 2.5% 40px 2.5%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 20px 3.5%;
+  border: 1px solid #d7e6ee; }
+  .teams li .img img {
+    border-radius: 0;
+    height: auto;
+    max-height: 80px;
+    max-width: 80px;
+    overflow: hidden;
+    width: 100%; }
+  .teams li .home, .teams li .score {
+    float: left; }
+  .teams li .home {
+    width: 35%; }
+  .teams li .score {
+    width: 30%;
+    text-align: center; }
+  .teams li .guest {
+    text-align: right; }
+
+.teams .banner {
+  padding: 60px 0 30px; }
+  .teams .banner .block {
+    float: left;
+    width: 70%;
+    padding: 30px 3.5%; }
+    .teams .banner .block .img {
+      float: left;
+      margin-right: 50px;
+      width: 200px;
+      overflow: hidden; }
+      .teams .banner .block .img img {
+        width: 100%;
+        vertical-align: top; }
+    .teams .banner .block .name .table {
+      margin-top: 50px; }
+  .teams .banner .info {
+    float: left;
+    width: 30%;
+    padding: 0 3.5% 0 0; }
+
 /*# sourceMappingURL=app.css.map */

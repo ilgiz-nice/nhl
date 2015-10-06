@@ -1,0 +1,63 @@
+.teams {
+  li {
+    width: 20%;
+    margin: 0 2.5% 40px 2.5%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px 3.5%;
+    border: 1px solid #d7e6ee;
+    .img {
+      img {
+        border-radius: 0;
+        height: auto;
+        max-height: 80px;
+        max-width: 80px;
+        overflow: hidden;
+        width: 100%;
+      }
+    }
+    .home, .score {
+      float: left;
+    }
+    .home {
+      width: 35%;
+    }
+    .score {
+      width: 30%;
+      text-align: center;
+    }
+    .guest {
+      text-align: right;
+    }
+  }
+  .banner {
+    padding: 60px 0 30px;
+    .block {
+      float: left;
+      width: 70%;
+      padding: 30px 3.5%;
+      .img {
+        float: left;
+        margin-right: 50px;
+        width: 200px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          vertical-align: top;
+        }
+      }
+      .name {
+        .table {
+          margin-top: 50px;
+        }
+      }
+
+    }
+    .info {
+      float: left;
+      width: 30%;
+      padding: 0 3.5% 0 0;
+    }
+  }
+
+}

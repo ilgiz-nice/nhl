@@ -40,24 +40,23 @@ class Match extends Model
     }
 
     /*
-     * Сыгранные игры
+     * используется в main/index
      */
 
-    public function scopePlayed($query) {
+    public function scopeGames($query, $id) {
         $query->select('match.*', 'home.name as home', 'guest.name as guest')
-            ->where('date', '<=', 'now()')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->orderBy('date', 'ASC');
     }
-
     /*
-     * Ожидаемые игры
+     * Используется в teams/team
      */
 
-    public function scopeNotPlayed($query) {
+    public function scopeTeamCalendar($query, $id) {
         $query->select('match.*', 'home.name as home', 'guest.name as guest')
-            ->where('date', '>', Carbon::now())
+            ->where('match.home_id', $id)
+            ->orWhere('match.guest_id', $id)
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->orderBy('date', 'ASC');

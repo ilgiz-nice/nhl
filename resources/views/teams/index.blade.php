@@ -2,20 +2,24 @@
 
 @section('content')
     <div class="teams">
-        @foreach($teams as $team)
-            <a href="teams/{{ $team->id }}">
-                <div class="block">
-                    <div class="logo">
-                        {!! HTML::image($team->logo) !!}
+        <ul>
+            @foreach($teams as $t)
+                <li>
+                    <div>
+                        <div class="img">
+                            {!! HTML::image($t->logo) !!}
+                        </div>
+                        <div class="text">
+                            <h5 class="name link" data-href="/teams/{{ $t->id }}">{{ $t->name }}</h5>
+                            <p class="city">{{ $t->city }}</p>
+                            <div class="hrefs">
+                                <a href="/calendar/{{ $t->id }}">Расписание</a>
+                                <a href="/stats/{{ $t->id }}">Статистика</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="name">
-                        {{ $team->name }}
-                    </div>
-                    <div class="description">
-                        {{ $team->description }}
-                    </div>
-                </div>
-            </a>
-        @endforeach
+                </li>
+            @endforeach
+        </ul>
     </div>
 @stop

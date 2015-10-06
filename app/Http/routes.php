@@ -32,7 +32,7 @@ Route::get('calendar', 'CalendarController@index');
  * Команды (3)
  */
 Route::get('/teams', 'TeamsController@index');
-Route::get('/teams/{{id}}', 'TeamsController@show');
+Route::get('/teams/{id}', 'TeamsController@show');
 Route::post('/teams/create', array(
     'as' => 'teams.create',
     'uses' => 'TeamsController@create'

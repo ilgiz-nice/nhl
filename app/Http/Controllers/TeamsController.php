@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Team;
+use App\Match;
+use App\Player;
+use App\Coach;
 use Excel;
 
 class TeamsController extends Controller
@@ -17,9 +20,13 @@ class TeamsController extends Controller
     }
 
     public function show($id) {
+        $coach = Coach::where('id', $id)->get()[0]->name;
         $team = Team::findOrFail($id);
+        $played = Match::TeamCalendar($id)->where('status', 'Завершен')->get();
+        $notPlayed = Match::TeamCalendar($id)->where('status', 'Ожидается')->get();
+        $players = Player::where('current_team', $id)->get();
 
-        return view('teams.team', compact('team'));
+        return view('teams.team', compact('team', 'notPlayed', 'played', 'players', 'coach'));
     }
 
     public function create(Request $request) {
