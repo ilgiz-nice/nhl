@@ -43,7 +43,7 @@ class Match extends Model
      * используется в main/index
      */
 
-    public function scopeGames($query, $id) {
+    public function scopeGames($query) {
         $query->select('match.*', 'home.name as home', 'guest.name as guest')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
