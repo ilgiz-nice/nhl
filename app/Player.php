@@ -22,6 +22,10 @@ class Player extends Model
         'photo'
     ];
 
+    /*
+     * Stats - Main
+     */
+
     public function scopeStats($query) {
         $top_goals = DB::table('players')
             ->select('players.name AS name', 'players.id AS id',

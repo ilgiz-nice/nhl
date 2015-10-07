@@ -7,12 +7,23 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Player;
+use App\Match;
 use Excel;
 
 class PlayersController extends Controller
 {
     public function index() {
         return view('welcome');
+    }
+
+    public function show($id) {
+        $player = Player::findOrFail($id);
+        $summary = Match::Summary($id);
+        //$summaryGroup = Match::Summary($id, 'group');
+        //$summaryPlayoff = Match::Summary($id, 'playoff');
+        //$summaryTotal = Match::Summary($id, 'total');
+
+        return view('players.player', compact('player', 'summary', 'summaryGroup', 'summaryPlayoff', 'summaryTotal'));
     }
 
     public function create(Request $request) {

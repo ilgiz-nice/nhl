@@ -32,6 +32,10 @@ class Match extends Model
         'lose_additional_time'
     ];
 
+    /*
+     * Export - manager/index
+     */
+
     public function scopeExport($query) {
         $query->select('match.*', 'home.name as home', 'guest.name as guest')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
@@ -40,7 +44,7 @@ class Match extends Model
     }
 
     /*
-     * используется в main/index
+     * Games - main/index
      */
 
     public function scopeGames($query) {
@@ -63,7 +67,7 @@ class Match extends Model
     }
 
     /*
-     * Календарь/Результат
+     * Календарь/Результат (переделать)
      */
 
     public function scopeCalendar($query) {
@@ -74,7 +78,7 @@ class Match extends Model
     }
 
     /*
-     * Турнирная таблица
+     * Tournament - main/index && stats/index (to be)
      */
 
     public function scopeTournament($query, $output) {
@@ -180,11 +184,33 @@ class Match extends Model
         return $output;
     }
 
+    /*
+     * MatchInfo - /matches/match
+     */
+
     public function scopeMatchInfo($query, $id) {
         $query->select('match.*', 'home.name as home', 'guest.name as guest', 'home.logo as home_logo', 'guest.logo as guest_logo',
             'home.city as home_city', 'guest.city as guest_city')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->where('match.id', $id);;
+    }
+
+    /*
+     * Summary - /players/player
+     */
+
+    public function scopeSummary($query, $id = null, $param = null) {
+        $seasons = Season::all();
+        $teams = Team::all();
+
+        foreach ($seasons as $s) {
+            $matchesGroup = Match::all()->where('stage', 'Группа')->where('season_id', $s->id);
+            $matchesPlayoff = Match::all()->where('stage', 'Плеофф')->where('season_id', $s->id);
+
+            foreach ($teams as $t) {
+                //
+            }
+        }
     }
 }

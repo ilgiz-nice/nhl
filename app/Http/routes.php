@@ -61,7 +61,7 @@ Route::resource('manager', 'ManagerController');
  * Игроки
  */
 Route::get('/players', 'PlayersController@index');
-Route::get('/players/{{id}}', 'PlayersController@show');
+Route::get('/players/{id}', 'PlayersController@show');
 Route::post( '/players/create', array(
     'as' => 'players.create',
     'uses' => 'PlayersController@create'

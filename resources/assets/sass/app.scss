@@ -1,25 +1,102 @@
-a {
+@font-face { //Шрифт
+  font-family: "DidactGothicRegular";
+  src: url("../fonts/DidactGothicRegular/DidactGothicRegular.eot");
+  src: url("../fonts/DidactGothicRegular/DidactGothicRegular.eot?#iefix")format("embedded-opentype"),
+  url("../fonts/DidactGothicRegular/DidactGothicRegular.woff") format("woff"),
+  url("../fonts/DidactGothicRegular/DidactGothicRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+html { //Горизональный скролл
+  overflow-x: hidden;
+}
+
+a { //Ссылки
   text-decoration: none;
   color: black;
 }
 
-header {
+header { //Убрать оступ
   padding-top: 0;
 }
-.menu_block {
+.menu_block { //???
   padding: 30px 0 30px 0;
 }
-.menu_block:after {
+.menu_block:after{  //Менеджер?
   left: 43%;
   width: 930px;
 }
 
-.link {
+.link { //Глобальные ссылки через jquery
   cursor: pointer;
 }
 
-footer {
+footer { //Сломался футер
   background: #608b7e;
   padding-top: 20px;
   margin-top: 50px;
+}
+
+.titleTabs { //Глобальные табы
+  width: 100%;
+  background: #fff;
+  padding: 30px 3.5%;
+  overflow: hidden;
+  .line {
+    h2 {
+      float: left;
+      position: relative;
+      margin: 0 2em -20px 0;
+      z-index: 2;
+      padding-top: 0;
+    }
+    .tabs {
+      max-width: 100%;
+      margin: 40px 0 0 0;
+      float: left;
+      z-index: 1;
+      .padding {
+        display: table;
+        white-space: nowrap;
+        padding: 0 0 30px 0;
+        .item {
+          font: 14px 'latobold';
+          padding: 0 1em 0 0;
+          display: table-cell;
+          cursor: pointer;
+          color: #02a7fd;
+          transition-duration: 0.25s;
+        }
+        .item.active {
+          color: #000;
+          cursor: default;
+        }
+        .item:after {
+          background: transparent;
+          bottom: -30px;
+          clear: both;
+          content: "";
+          display: block;
+          height: 1px;
+          position: relative;
+          width: 100%;
+          transition-duration: 0.25s;
+        }
+        .item.active:after {
+          background: #000;
+        }
+      }
+    }
+  }
+  .line:after {
+    position: relative;
+    clear: both;
+    display: block;
+    bottom: 1px;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: #d7e6ee;
+  }
 }
