@@ -204,13 +204,87 @@ class Match extends Model
         $seasons = Season::all();
         $teams = Team::all();
 
+        $array = [];
+
+        foreach ($teams as $t) {
+            $object = (object) array();
+            $object->teamId = $t->id;
+            $object->playerId = NULL;
+            $object->teamName = $t->name;
+            $object->playerName = NULL;
+            $object->games = 0;
+            $object->winMain = 0;
+            $object->winOvertime = 0;
+            $object->loseMain = 0;
+            $object->loseOvertime = 0;
+            $object->winBullits = 0;
+            $object->loseBullits = 0;
+            $object->goalsGiven = 0;
+            $object->goalsTaken = 0;
+            $object->num = NULL;
+            $object->goals = 0;
+            $object->assists = 0;
+            $object->points = 0;
+            $object->plusMinus = 0;
+            $object->penaltyTime = 0;
+            $object->goalsEven = 0;
+            $object->goalsMore = 0;
+            $object->goalsLess = 0;
+            $object->goalsOvertime = 0;
+            $object->goalsWin = 0;
+            $object->bullitsWin = 0;
+            array_push($array, $object);
+        }
+
         foreach ($seasons as $s) {
             $matchesGroup = Match::all()->where('stage', 'Группа')->where('season_id', $s->id);
-            $matchesPlayoff = Match::all()->where('stage', 'Плеофф')->where('season_id', $s->id);
+            $matchesPlayoff = Match::all()->where('stage', 'Плейофф')->where('season_id', $s->id);
+            $matchesTotal = Match::all()->where('season_id', $s->id);
 
-            foreach ($teams as $t) {
-                //
+            foreach ($matchesGroup as $m) { //summaryGroup
+                foreach ($teams as $t) { //summaryTeam
+                    if ($m->home_id == $t->id OR $m->guest_id == $t->id) {
+                        foreach ($array as $a) {
+                            if ($a->teamId == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->teamId) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->teamId) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->teamId) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->teamId) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->teamId) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->teamId) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        }
+                    }
+                }
             }
         }
+
+        dd($array);
     }
 }
