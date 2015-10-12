@@ -203,68 +203,494 @@ class Match extends Model
     public function scopeSummary($query, $id = null, $param = null) {
         $seasons = Season::all();
         $teams = Team::all();
+        $players = Player::all();
+        $goals = Goal::all();
 
-        $array = [];
-
-        foreach ($teams as $t) {
-            $object = (object) array();
-            $object->teamId = $t->id;
-            $object->playerId = NULL;
-            $object->teamName = $t->name;
-            $object->playerName = NULL;
-            $object->games = 0;
-            $object->winMain = 0;
-            $object->winOvertime = 0;
-            $object->loseMain = 0;
-            $object->loseOvertime = 0;
-            $object->winBullits = 0;
-            $object->loseBullits = 0;
-            $object->goalsGiven = 0;
-            $object->goalsTaken = 0;
-            $object->num = NULL;
-            $object->goals = 0;
-            $object->assists = 0;
-            $object->points = 0;
-            $object->plusMinus = 0;
-            $object->penaltyTime = 0;
-            $object->goalsEven = 0;
-            $object->goalsMore = 0;
-            $object->goalsLess = 0;
-            $object->goalsOvertime = 0;
-            $object->goalsWin = 0;
-            $object->bullitsWin = 0;
-            array_push($array, $object);
-        }
+        $arrayTeams = [];
+        $arrayPlayers = [];
 
         foreach ($seasons as $s) {
-            $matchesGroup = Match::all()->where('stage', 'Группа')->where('season_id', $s->id);
-            $matchesPlayoff = Match::all()->where('stage', 'Плейофф')->where('season_id', $s->id);
-            $matchesTotal = Match::all()->where('season_id', $s->id);
+            $object = (object) array();
+            $object->{'seasons'} = array();
+            array_push($arrayTeams, $object);
+            $object = (object) array();
+            $object->{$s->season} = array();
+            $object->{'group'} = array();
+            $object->{'playoff'} = array();
+            $object->{'total'} = array();
+            array_push($arrayTeams[0]->{'seasons'}, $object);
+            $object = (object) array();
+            $object->{'group'} = array();
+            $object->{'playoff'} = array();
+            array_push($arrayTeams[0]->{'seasons'}[0]->{$s->season}, $object);
+            foreach ($teams as $t) {
+                $object = (object) array();
+                $object->id = $t->id;
+                $object->name = $t->name;
+                $object->games = 0;
+                $object->winMain = 0;
+                $object->winOvertime = 0;
+                $object->loseMain = 0;
+                $object->loseOvertime = 0;
+                $object->winBullitt = 0;
+                $object->loseBullitt = 0;
+                $object->goalsGiven = 0;
+                $object->goalsTaken = 0;
+                array_push($arrayTeams[0]->{$s->season}[0]->{'group'}, $object);
+                $object = (object) array();
+                $object->id = $t->id;
+                $object->name = $t->name;
+                $object->games = 0;
+                $object->winMain = 0;
+                $object->winOvertime = 0;
+                $object->loseMain = 0;
+                $object->loseOvertime = 0;
+                $object->winBullitt = 0;
+                $object->loseBullitt = 0;
+                $object->goalsGiven = 0;
+                $object->goalsTaken = 0;
+                array_push($arrayTeams[0]->{$s->season}[0]->{'playoff'}, $object);
+                $object = (object) array();
+                $object->id = $t->id;
+                $object->name = $t->name;
+                $object->games = 0;
+                $object->winMain = 0;
+                $object->winOvertime = 0;
+                $object->loseMain = 0;
+                $object->loseOvertime = 0;
+                $object->winBullitt = 0;
+                $object->loseBullitt = 0;
+                $object->goalsGiven = 0;
+                $object->goalsTaken = 0;
+                array_push($arrayTeams[0]->{'group'}, $object);
+                $object = (object) array();
+                $object->id = $t->id;
+                $object->name = $t->name;
+                $object->games = 0;
+                $object->winMain = 0;
+                $object->winOvertime = 0;
+                $object->loseMain = 0;
+                $object->loseOvertime = 0;
+                $object->winBullitt = 0;
+                $object->loseBullitt = 0;
+                $object->goalsGiven = 0;
+                $object->goalsTaken = 0;
+                array_push($arrayTeams[0]->{'playoff'}, $object);
+                $object = (object) array();
+                $object->id = $t->id;
+                $object->name = $t->name;
+                $object->games = 0;
+                $object->winMain = 0;
+                $object->winOvertime = 0;
+                $object->loseMain = 0;
+                $object->loseOvertime = 0;
+                $object->winBullitt = 0;
+                $object->loseBullitt = 0;
+                $object->goalsGiven = 0;
+                $object->goalsTaken = 0;
+                array_push($arrayTeams[0]->{'total'}, $object);
+            }
+        } //Шаблон для команд
+        dd($arrayTeams);
 
-            foreach ($matchesGroup as $m) { //summaryGroup
-                foreach ($teams as $t) { //summaryTeam
+        foreach ($seasons as $s) {
+            $object = (object) array();
+            $object->{$s->season} = array();
+            $object->{'group'} = array();
+            $object->{'playoff'} = array();
+            $object->{'total'} = array();
+            array_push($arrayPlayers, $object);
+            $object = (object) array();
+            $object->{'group'} = array();
+            $object->{'playoff'} = array();
+            array_push($arrayPlayers[0]->{$s->season}, $object);
+            foreach ($players as $p) {
+                $object = (object) array();
+                $object->id = $p->id;
+                $object->name = $p->name;
+                $object->num = $p->num;
+                $object->stage = NULL;
+                $object->season = NULL;
+                $object->teamId = NULL;
+                $object->teamName = NULL;
+                $object->goals = 0; //goals
+                $object->assists = 0; //goals
+                $object->points = 0; //goals
+                $object->plusMinus = 0; //goals
+                $object->penaltyTime = 0; //penalty
+                $object->goalsEven = 0; //goals
+                $object->goalsMore = 0; //goals
+                $object->goalsLess = 0; //goals
+                $object->goalsOvertime = 0; //надо добавить
+                $object->goalsWin = 0; //goals
+                $object->bullitsWin = 0; //goals
+                array_push($arrayPlayers[0]->{$s->season}[0]->{'group'}, $object);
+                $object = (object) array();
+                $object->id = $p->id;
+                $object->name = $p->name;
+                $object->num = $p->num;
+                $object->stage = NULL;
+                $object->season = NULL;
+                $object->teamId = NULL;
+                $object->teamName = NULL;
+                $object->goals = 0; //goals
+                $object->assists = 0; //goals
+                $object->points = 0; //goals
+                $object->plusMinus = 0; //goals
+                $object->penaltyTime = 0; //penalty
+                $object->goalsEven = 0; //goals
+                $object->goalsMore = 0; //goals
+                $object->goalsLess = 0; //goals
+                $object->goalsOvertime = 0; //надо добавить
+                $object->goalsWin = 0; //goals
+                $object->bullitsWin = 0; //goals
+                array_push($arrayPlayers[0]->{$s->season}[0]->{'playoff'}, $object);
+                $object = (object) array();
+                $object->id = $p->id;
+                $object->name = $p->name;
+                $object->num = $p->num;
+                $object->stage = NULL;
+                $object->season = NULL;
+                $object->teamId = NULL;
+                $object->teamName = NULL;
+                $object->goals = 0; //goals
+                $object->assists = 0; //goals
+                $object->points = 0; //goals
+                $object->plusMinus = 0; //goals
+                $object->penaltyTime = 0; //penalty
+                $object->goalsEven = 0; //goals
+                $object->goalsMore = 0; //goals
+                $object->goalsLess = 0; //goals
+                $object->goalsOvertime = 0; //надо добавить
+                $object->goalsWin = 0; //goals
+                $object->bullitsWin = 0; //goals
+                array_push($arrayPlayers[0]->{'group'}, $object);
+                $object = (object) array();
+                $object->id = $p->id;
+                $object->name = $p->name;
+                $object->num = $p->num;
+                $object->stage = NULL;
+                $object->season = NULL;
+                $object->teamId = NULL;
+                $object->teamName = NULL;
+                $object->goals = 0; //goals
+                $object->assists = 0; //goals
+                $object->points = 0; //goals
+                $object->plusMinus = 0; //goals
+                $object->penaltyTime = 0; //penalty
+                $object->goalsEven = 0; //goals
+                $object->goalsMore = 0; //goals
+                $object->goalsLess = 0; //goals
+                $object->goalsOvertime = 0; //надо добавить
+                $object->goalsWin = 0; //goals
+                $object->bullitsWin = 0; //goals
+                array_push($arrayPlayers[0]->{'playoff'}, $object);
+                $object = (object) array();
+                $object->id = $p->id;
+                $object->name = $p->name;
+                $object->num = $p->num;
+                $object->stage = NULL;
+                $object->season = NULL;
+                $object->teamId = NULL;
+                $object->teamName = NULL;
+                $object->goals = 0; //goals
+                $object->assists = 0; //goals
+                $object->points = 0; //goals
+                $object->plusMinus = 0; //goals
+                $object->penaltyTime = 0; //penalty
+                $object->goalsEven = 0; //goals
+                $object->goalsMore = 0; //goals
+                $object->goalsLess = 0; //goals
+                $object->goalsOvertime = 0; //надо добавить
+                $object->goalsWin = 0; //goals
+                $object->bullitsWin = 0; //goals
+                array_push($arrayPlayers[0]->{'total'}, $object);
+            }
+        } //Шаблон для игроков
+
+        foreach ($seasons as $s) {
+            $matchesGroup = Match::all()->where('season_id', $s->id)->where('stage', 'Группа')->where('status', 'Завершен');
+            $matchesPlayoff = Match::all()->where('season_id', $s->id)->where('stage', 'Плейофф')->where('status', 'Завершен');
+
+            foreach ($matchesGroup as $m) { // Группа
+                foreach ($teams as $t) { // Команды
                     if ($m->home_id == $t->id OR $m->guest_id == $t->id) {
-                        foreach ($array as $a) {
-                            if ($a->teamId == $t->id) {
+                        foreach ($arrayTeams[0]->{$s->season}[0]->{'group'} as $a) {
+                            if ($a->id == $t->id) {
                                 // Количество игр
                                 $a->games = $a->games + 1;
                                 // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
-                                if ($m->win_main_time == $a->teamId) {
+                                if ($m->win_main_time == $a->id) {
                                     $a->winMain = $a->winMain + 1;
                                 }
-                                if ($m->win_additional_time == $a->teamId) {
+                                if ($m->win_additional_time == $a->id) {
                                     $a->winOvertime = $a->winOvertime + 1;
                                 }
-                                if ($m->lose_main_time == $a->teamId) {
+                                if ($m->lose_main_time == $a->id) {
                                     $a->loseMain = $a->loseMain + 1;
                                 }
-                                if ($m->lose_additional_time == $a->teamId) {
+                                if ($m->lose_additional_time == $a->id) {
                                     $a->loseOvertime = $a->loseOvertime + 1;
                                 }
-                                if ($m->win_bullitt == $a->teamId) {
+                                if ($m->win_bullitt == $a->id) {
                                     $a->winBullitt = $a->winBullitt + 1;
                                 }
-                                if ($m->lose_bullitt == $a->teamId) {
+                                if ($m->lose_bullitt == $a->id) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        } //Сезон->Группа
+
+                        foreach ($arrayTeams[0]->{'group'} as $a) {
+                            if ($a->id == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->id) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->id) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->id) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->id) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->id) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->id) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        } //Группа
+
+                        foreach ($arrayTeams[0]->{'total'} as $a) {
+                            if ($a->id == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->id) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->id) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->id) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->id) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->id) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->id) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        } //Итого
+                    }
+                }
+
+                if ($id != null) { // Игроки
+                    foreach ($players as $p) {
+                        foreach ($goals as $g) {
+                            foreach ($arrayPlayers[0]->{$s->season}[0]->{'group'} as $a) {
+                                if ($a->id == $p->id) {
+                                    $a->stage = 'Группа';
+                                    $a->season = $s->season;
+                                    $a->teamId = Team::find($p->current_team)->id;
+                                    $a->teamName = Team::find($p->current_team)->name;
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            } //Сезон->Группа
+
+                            foreach ($arrayPlayers[0]->{'group'} as $a) {
+                                if ($a->id == $p->id) {
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            } //Группа
+
+                            foreach ($arrayPlayers[0]->{'total'} as $a) {
+                                if ($a->id == $p->id) {
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            } //Итого
+                        }
+                    }
+                }
+            } // Группа
+
+            foreach ($matchesPlayoff as $m) { //summaryPlayoff
+                foreach ($teams as $t) { //summaryTeam
+                    if ($m->home_id == $t->id OR $m->guest_id == $t->id) {
+                        foreach ($arrayTeams[0]->{$s->season}[0]->{'playoff'} as $a) {
+                            if ($a->id == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->id) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->id) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->id) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->id) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->id) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->id) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        }
+
+                        foreach ($arrayTeams[0]->{'playoff'} as $a) {
+                            if ($a->id == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->id) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->id) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->id) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->id) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->id) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->id) {
+                                    $a->loseBullitt = $a->loseBullitt + 1;
+                                }
+                                // Голы забиты и пропущены
+                                if ($m->home_id == $t->id) {
+                                    $a->goalsGiven = $a->goalsGiven + $m->home_goals;
+                                    $a->goalsTaken = $a->goalsTaken + $m->guest_goals;
+                                }
+                                if ($m->guest_id == $t->id) {
+                                    $a->goalsTaken = $a->goalsTaken + $m->home_goals;
+                                    $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
+                                }
+                                // Очки
+                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                            }
+                        }
+
+                        foreach ($arrayTeams[0]->{'total'} as $a) {
+                            if ($a->id == $t->id) {
+                                // Количество игр
+                                $a->games = $a->games + 1;
+                                // Победы и проигрыши в основное, дополнительное и дополнительное по буллитам
+                                if ($m->win_main_time == $a->id) {
+                                    $a->winMain = $a->winMain + 1;
+                                }
+                                if ($m->win_additional_time == $a->id) {
+                                    $a->winOvertime = $a->winOvertime + 1;
+                                }
+                                if ($m->lose_main_time == $a->id) {
+                                    $a->loseMain = $a->loseMain + 1;
+                                }
+                                if ($m->lose_additional_time == $a->id) {
+                                    $a->loseOvertime = $a->loseOvertime + 1;
+                                }
+                                if ($m->win_bullitt == $a->id) {
+                                    $a->winBullitt = $a->winBullitt + 1;
+                                }
+                                if ($m->lose_bullitt == $a->id) {
                                     $a->loseBullitt = $a->loseBullitt + 1;
                                 }
                                 // Голы забиты и пропущены
@@ -282,9 +708,78 @@ class Match extends Model
                         }
                     }
                 }
-            }
-        }
 
-        dd($array);
+                if ($id != null) { //summaryPlayer
+                    foreach ($players as $p) {
+                        foreach ($goals as $g) {
+                            foreach ($arrayPlayers[0]->{$s->season}[0]->{'playoff'} as $a) {
+                                if ($a->id == $p->id) {
+                                    $a->stage = 'Плейофф';
+                                    $a->season = $s->season;
+                                    $a->teamId = Team::find($p->current_team)->id;
+                                    $a->teamName = Team::find($p->current_team)->name;
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            }
+
+                            foreach ($arrayPlayers[0]->{'playoff'} as $a) {
+                                if ($a->id == $p->id) {
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            }
+
+                            foreach ($arrayPlayers[0]->{'total'} as $a) {
+                                if ($a->id == $p->id) {
+                                    if ($g->player_id == $a->id) {
+                                        $a->goals = $a->goals + 1;
+                                    }
+                                    if ($g->player_assist_1_id == $a->id OR $g->player_assist_2_id == $a->id) {
+                                        $a->assists = $a->assists + 1;
+                                    }
+                                    $a->points = $a->goals + $a->assists;
+                                    if ($g->win_goal == 1 AND $g->player_id == $a->id) {
+                                        $a->goalsWin = $a->goalsWin + 1;
+                                    }
+                                    if ($g->win_bullitt == 1 AND $g->player_id == $a->id) {
+                                        $a->bullitsWin = $a->bullitsWin + 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } // Плейофф
+
+        } //Заполнение по сезонам
+        dd($arrayPlayers);
+
+        if ($id != null) {
+            return $arrayPlayers;
+        }
+        return $arrayTeams;
     }
 }

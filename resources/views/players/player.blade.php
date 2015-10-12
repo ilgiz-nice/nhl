@@ -84,76 +84,78 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($summary as $s)
-                    <tr>
-                        <td colspan="14">{{ $s->stage }} {{ $s->season }}</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="/stats/team/{{ $s->team_id }}">{{ $s->team }}</a>
-                        </td>
-                        <td>{{ $s->num }}</td>
-                        <td>{{ $s->games }}</td>
-                        <td>{{ $s->goals }}</td>
-                        <td>{{ $s->assists }}</td>
-                        <td>{{ $s->points }}</td>
-                        <td>{{ $s->plusMinus }}</td>
-                        <td>{{ $s->penaltyTime }}</td>
-                        <td>{{ $s->goalsEven }}</td>
-                        <td>{{ $s->goalsMore }}</td>
-                        <td>{{ $s->goalsLess }}</td>
-                        <td>{{ $s->goalsOvertime }}</td>
-                        <td>{{ $s->goalsWin }}</td>
-                        <td>{{ $s->bullitsWin }}</td>
-                    </tr>
+                @foreach($summary[0] as $sum)
+                    @foreach($sum as $s)
+                        <tr>
+                            <td colspan="14">{{ $s->stage }} {{ $s->season }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/stats/team/{{ $s->teamId }}">{{ $s->teamName }}</a>
+                            </td>
+                            <td>{{ $s->num }}</td>
+                            <td>{{ $s->games }}</td>
+                            <td>{{ $s->goals }}</td>
+                            <td>{{ $s->assists }}</td>
+                            <td>{{ $s->points }}</td>
+                            <td>{{ $s->plusMinus }}</td>
+                            <td>{{ $s->penaltyTime }}</td>
+                            <td>{{ $s->goalsEven }}</td>
+                            <td>{{ $s->goalsMore }}</td>
+                            <td>{{ $s->goalsLess }}</td>
+                            <td>{{ $s->goalsOvertime }}</td>
+                            <td>{{ $s->goalsWin }}</td>
+                            <td>{{ $s->bullitsWin }}</td>
+                        </tr>
+                    @endforeach
                 @endforeach
                 <tr>
                     <td>Суммарная статистика НХЛ</td>
                 </tr>
                 <tr>
                     <td colspan="2">Регулярный чемпионат</td>
-                    <td>{{ $summuryGroup->num }}</td>
-                    <td>{{ $summuryGroup->games }}</td>
-                    <td>{{ $summuryGroup->goals }}</td>
-                    <td>{{ $summuryGroup->assists }}</td>
-                    <td>{{ $summuryGroup->points }}</td>
-                    <td>{{ $summuryGroup->plusMinus }}</td>
-                    <td>{{ $summuryGroup->penaltyTime }}</td>
-                    <td>{{ $summuryGroup->goalsEven }}</td>
-                    <td>{{ $summuryGroup->goalsMore }}</td>
-                    <td>{{ $summuryGroup->goalsLess }}</td>
-                    <td>{{ $summuryGroup->goalsOvertime }}</td>
-                    <td>{{ $summuryGroup->goalsWin }}</td>
+                    <td>{{ $summaryGroup->num }}</td>
+                    <td>{{ $summaryGroup->games }}</td>
+                    <td>{{ $summaryGroup->goals }}</td>
+                    <td>{{ $summaryGroup->assists }}</td>
+                    <td>{{ $summaryGroup->points }}</td>
+                    <td>{{ $summaryGroup->plusMinus }}</td>
+                    <td>{{ $summaryGroup->penaltyTime }}</td>
+                    <td>{{ $summaryGroup->goalsEven }}</td>
+                    <td>{{ $summaryGroup->goalsMore }}</td>
+                    <td>{{ $summaryGroup->goalsLess }}</td>
+                    <td>{{ $summaryGroup->goalsOvertime }}</td>
+                    <td>{{ $summaryGroup->goalsWin }}</td>
                 </tr>
                 <tr>
                     <td colspan="2">Плей-офф</td>
-                    <td>{{ $summuryPlayoff->num }}</td>
-                    <td>{{ $summuryPlayoff->games }}</td>
-                    <td>{{ $summuryPlayoff->goals }}</td>
-                    <td>{{ $summuryPlayoff->assists }}</td>
-                    <td>{{ $summuryPlayoff->points }}</td>
-                    <td>{{ $summuryPlayoff->plusMinus }}</td>
-                    <td>{{ $summuryPlayoff->penaltyTime }}</td>
-                    <td>{{ $summuryPlayoff->goalsEven }}</td>
-                    <td>{{ $summuryPlayoff->goalsMore }}</td>
-                    <td>{{ $summuryPlayoff->goalsLess }}</td>
-                    <td>{{ $summuryPlayoff->goalsOvertime }}</td>
-                    <td>{{ $summuryPlayoff->goalsWin }}</td>
+                    <td>{{ $summaryPlayoff->num }}</td>
+                    <td>{{ $summaryPlayoff->games }}</td>
+                    <td>{{ $summaryPlayoff->goals }}</td>
+                    <td>{{ $summaryPlayoff->assists }}</td>
+                    <td>{{ $summaryPlayoff->points }}</td>
+                    <td>{{ $summaryPlayoff->plusMinus }}</td>
+                    <td>{{ $summaryPlayoff->penaltyTime }}</td>
+                    <td>{{ $summaryPlayoff->goalsEven }}</td>
+                    <td>{{ $summaryPlayoff->goalsMore }}</td>
+                    <td>{{ $summaryPlayoff->goalsLess }}</td>
+                    <td>{{ $summaryPlayoff->goalsOvertime }}</td>
+                    <td>{{ $summaryPlayoff->goalsWin }}</td>
                 </tr>
                 <tr>
                     <td colspan="2">Всего</td>
-                    <td>{{ $summuryTotal->num }}</td>
-                    <td>{{ $summuryTotal->games }}</td>
-                    <td>{{ $summuryTotal->goals }}</td>
-                    <td>{{ $summuryTotal->assists }}</td>
-                    <td>{{ $summuryTotal->points }}</td>
-                    <td>{{ $summuryTotal->plusMinus }}</td>
-                    <td>{{ $summuryTotal->penaltyTime }}</td>
-                    <td>{{ $summuryTotal->goalsEven }}</td>
-                    <td>{{ $summuryTotal->goalsMore }}</td>
-                    <td>{{ $summuryTotal->goalsLess }}</td>
-                    <td>{{ $summuryTotal->goalsOvertime }}</td>
-                    <td>{{ $summuryTotal->goalsWin }}</td>
+                    <td>{{ $summaryTotal->num }}</td>
+                    <td>{{ $summaryTotal->games }}</td>
+                    <td>{{ $summaryTotal->goals }}</td>
+                    <td>{{ $summaryTotal->assists }}</td>
+                    <td>{{ $summaryTotal->points }}</td>
+                    <td>{{ $summaryTotal->plusMinus }}</td>
+                    <td>{{ $summaryTotal->penaltyTime }}</td>
+                    <td>{{ $summaryTotal->goalsEven }}</td>
+                    <td>{{ $summaryTotal->goalsMore }}</td>
+                    <td>{{ $summaryTotal->goalsLess }}</td>
+                    <td>{{ $summaryTotal->goalsOvertime }}</td>
+                    <td>{{ $summaryTotal->goalsWin }}</td>
                 </tr>
                 </tbody>
             </table>

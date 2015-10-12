@@ -19,11 +19,8 @@ class PlayersController extends Controller
     public function show($id) {
         $player = Player::findOrFail($id);
         $summary = Match::Summary($id);
-        //$summaryGroup = Match::Summary($id, 'group');
-        //$summaryPlayoff = Match::Summary($id, 'playoff');
-        //$summaryTotal = Match::Summary($id, 'total');
 
-        return view('players.player', compact('player', 'summary', 'summaryGroup', 'summaryPlayoff', 'summaryTotal'));
+        return view('players.player', compact('player', 'summary'));
     }
 
     public function create(Request $request) {
