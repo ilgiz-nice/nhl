@@ -315,6 +315,7 @@ class Match extends Model
                 $object->season = NULL;
                 $object->teamId = NULL;
                 $object->teamName = NULL;
+                $object->games = 0; //goals
                 $object->goals = 0; //goals
                 $object->assists = 0; //goals
                 $object->points = 0; //goals
@@ -335,6 +336,7 @@ class Match extends Model
                 $object->season = NULL;
                 $object->teamId = NULL;
                 $object->teamName = NULL;
+                $object->games = 0; //goals
                 $object->goals = 0; //goals
                 $object->assists = 0; //goals
                 $object->points = 0; //goals
@@ -355,6 +357,7 @@ class Match extends Model
                 $object->season = NULL;
                 $object->teamId = NULL;
                 $object->teamName = NULL;
+                $object->games = 0; //goals
                 $object->goals = 0; //goals
                 $object->assists = 0; //goals
                 $object->points = 0; //goals
@@ -375,6 +378,7 @@ class Match extends Model
                 $object->season = NULL;
                 $object->teamId = NULL;
                 $object->teamName = NULL;
+                $object->games = 0; //goals
                 $object->goals = 0; //goals
                 $object->assists = 0; //goals
                 $object->points = 0; //goals
@@ -395,6 +399,7 @@ class Match extends Model
                 $object->season = NULL;
                 $object->teamId = NULL;
                 $object->teamName = NULL;
+                $object->games = 0; //goals
                 $object->goals = 0; //goals
                 $object->assists = 0; //goals
                 $object->points = 0; //goals
@@ -535,6 +540,7 @@ class Match extends Model
                         foreach ($goals as $g) {
                             foreach ($arrayPlayers[0]->{'seasons'}[0]->{$s->season}[0]->{'group'} as $a) {
                                 if ($a->id == $p->id) {
+                                    dump('Группа');
                                     $a->stage = 'Группа';
                                     $a->season = $s->season;
                                     $a->teamId = Team::find($p->current_team)->id;
@@ -777,8 +783,6 @@ class Match extends Model
             } // Плейофф
 
         } //Заполнение по сезонам
-
-        dd($arrayTeams);
 
         if ($id != null) {
             return $arrayPlayers;

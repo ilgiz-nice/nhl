@@ -85,29 +85,57 @@
                 </thead>
                 <tbody>
                 @foreach($summary[0]->{'seasons'}[0] as $season)
-                    @foreach($season[0] as $s)
-                        //Каждая группа каждый плеофф:
-                        <tr>
-                            <td colspan="14">{{ $s->stage }} {{ $s->season }}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="/stats/team/{{ $s->teamId }}">{{ $s->teamName }}</a>
-                            </td>
-                            <td>{{ $s->num }}</td>
-                            <td>{{ $s->games }}</td>
-                            <td>{{ $s->goals }}</td>
-                            <td>{{ $s->assists }}</td>
-                            <td>{{ $s->points }}</td>
-                            <td>{{ $s->plusMinus }}</td>
-                            <td>{{ $s->penaltyTime }}</td>
-                            <td>{{ $s->goalsEven }}</td>
-                            <td>{{ $s->goalsMore }}</td>
-                            <td>{{ $s->goalsLess }}</td>
-                            <td>{{ $s->goalsOvertime }}</td>
-                            <td>{{ $s->goalsWin }}</td>
-                            <td>{{ $s->bullitsWin }}</td>
-                        </tr>
+                    @foreach($season as $s)
+                        @foreach($s->{'group'} as $g)
+                            @if($g->id == $player->id)
+                                <tr>
+                                    <td colspan="14">{{ $g->stage }} {{ $g->season }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/stats/team/{{ $g->teamId }}">{{ $g->teamName }}</a>
+                                    </td>
+                                    <td>{{ $g->num }}</td>
+                                    <td>{{ $g->games }}</td>
+                                    <td>{{ $g->goals }}</td>
+                                    <td>{{ $g->assists }}</td>
+                                    <td>{{ $g->points }}</td>
+                                    <td>{{ $g->plusMinus }}</td>
+                                    <td>{{ $g->penaltyTime }}</td>
+                                    <td>{{ $g->goalsEven }}</td>
+                                    <td>{{ $g->goalsMore }}</td>
+                                    <td>{{ $g->goalsLess }}</td>
+                                    <td>{{ $g->goalsOvertime }}</td>
+                                    <td>{{ $g->goalsWin }}</td>
+                                    <td>{{ $g->bullitsWin }}</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                        @foreach($s->playoff as $p)
+                            @if($p->id == $player->id)
+                                <tr>
+                                    <td colspan="14">{{ $p->stage }} {{ $p->season }}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/stats/team/{{ $p->teamId }}">{{ $p->teamName }}</a>
+                                    </td>
+                                    <td>{{ $p->num }}</td>
+                                    <td>{{ $p->games }}</td>
+                                    <td>{{ $p->goals }}</td>
+                                    <td>{{ $p->assists }}</td>
+                                    <td>{{ $p->points }}</td>
+                                    <td>{{ $p->plusMinus }}</td>
+                                    <td>{{ $p->penaltyTime }}</td>
+                                    <td>{{ $p->goalsEven }}</td>
+                                    <td>{{ $p->goalsMore }}</td>
+                                    <td>{{ $p->goalsLess }}</td>
+                                    <td>{{ $p->goalsOvertime }}</td>
+                                    <td>{{ $p->goalsWin }}</td>
+                                    <td>{{ $p->bullitsWin }}</td>
+                                </tr>
+                            @endif
+                        @endforeach
                     @endforeach
                 @endforeach
                 <tr>
@@ -115,48 +143,60 @@
                 </tr>
                 <tr>
                     <td colspan="2">Регулярный чемпионат</td>
-                    <td>{{ $summaryGroup->num }}</td>
-                    <td>{{ $summaryGroup->games }}</td>
-                    <td>{{ $summaryGroup->goals }}</td>
-                    <td>{{ $summaryGroup->assists }}</td>
-                    <td>{{ $summaryGroup->points }}</td>
-                    <td>{{ $summaryGroup->plusMinus }}</td>
-                    <td>{{ $summaryGroup->penaltyTime }}</td>
-                    <td>{{ $summaryGroup->goalsEven }}</td>
-                    <td>{{ $summaryGroup->goalsMore }}</td>
-                    <td>{{ $summaryGroup->goalsLess }}</td>
-                    <td>{{ $summaryGroup->goalsOvertime }}</td>
-                    <td>{{ $summaryGroup->goalsWin }}</td>
+                    @foreach($summary[0]->{'group'} as $g)
+                        @if($g->id == $player->id)
+                        <td>{{ $g->num }}</td>
+                        <td>{{ $g->games }}</td>
+                        <td>{{ $g->goals }}</td>
+                        <td>{{ $g->assists }}</td>
+                        <td>{{ $g->points }}</td>
+                        <td>{{ $g->plusMinus }}</td>
+                        <td>{{ $g->penaltyTime }}</td>
+                        <td>{{ $g->goalsEven }}</td>
+                        <td>{{ $g->goalsMore }}</td>
+                        <td>{{ $g->goalsLess }}</td>
+                        <td>{{ $g->goalsOvertime }}</td>
+                        <td>{{ $g->goalsWin }}</td>
+                        @endif
+                    @endforeach
                 </tr>
                 <tr>
                     <td colspan="2">Плей-офф</td>
-                    <td>{{ $summaryPlayoff->num }}</td>
-                    <td>{{ $summaryPlayoff->games }}</td>
-                    <td>{{ $summaryPlayoff->goals }}</td>
-                    <td>{{ $summaryPlayoff->assists }}</td>
-                    <td>{{ $summaryPlayoff->points }}</td>
-                    <td>{{ $summaryPlayoff->plusMinus }}</td>
-                    <td>{{ $summaryPlayoff->penaltyTime }}</td>
-                    <td>{{ $summaryPlayoff->goalsEven }}</td>
-                    <td>{{ $summaryPlayoff->goalsMore }}</td>
-                    <td>{{ $summaryPlayoff->goalsLess }}</td>
-                    <td>{{ $summaryPlayoff->goalsOvertime }}</td>
-                    <td>{{ $summaryPlayoff->goalsWin }}</td>
+                    @foreach($summary[0]->{'playoff'} as $p)
+                        @if($p->id == $player->id)
+                            <td>{{ $p->num }}</td>
+                            <td>{{ $p->games }}</td>
+                            <td>{{ $p->goals }}</td>
+                            <td>{{ $p->assists }}</td>
+                            <td>{{ $p->points }}</td>
+                            <td>{{ $p->plusMinus }}</td>
+                            <td>{{ $p->penaltyTime }}</td>
+                            <td>{{ $p->goalsEven }}</td>
+                            <td>{{ $p->goalsMore }}</td>
+                            <td>{{ $p->goalsLess }}</td>
+                            <td>{{ $p->goalsOvertime }}</td>
+                            <td>{{ $p->goalsWin }}</td>
+                        @endif
+                    @endforeach
                 </tr>
                 <tr>
                     <td colspan="2">Всего</td>
-                    <td>{{ $summaryTotal->num }}</td>
-                    <td>{{ $summaryTotal->games }}</td>
-                    <td>{{ $summaryTotal->goals }}</td>
-                    <td>{{ $summaryTotal->assists }}</td>
-                    <td>{{ $summaryTotal->points }}</td>
-                    <td>{{ $summaryTotal->plusMinus }}</td>
-                    <td>{{ $summaryTotal->penaltyTime }}</td>
-                    <td>{{ $summaryTotal->goalsEven }}</td>
-                    <td>{{ $summaryTotal->goalsMore }}</td>
-                    <td>{{ $summaryTotal->goalsLess }}</td>
-                    <td>{{ $summaryTotal->goalsOvertime }}</td>
-                    <td>{{ $summaryTotal->goalsWin }}</td>
+                    @foreach($summary[0]->{'total'} as $t)
+                        @if($t->id == $player->id)
+                            <td>{{ $t->num }}</td>
+                            <td>{{ $t->games }}</td>
+                            <td>{{ $t->goals }}</td>
+                            <td>{{ $t->assists }}</td>
+                            <td>{{ $t->points }}</td>
+                            <td>{{ $t->plusMinus }}</td>
+                            <td>{{ $t->penaltyTime }}</td>
+                            <td>{{ $t->goalsEven }}</td>
+                            <td>{{ $t->goalsMore }}</td>
+                            <td>{{ $t->goalsLess }}</td>
+                            <td>{{ $t->goalsOvertime }}</td>
+                            <td>{{ $t->goalsWin }}</td>
+                        @endif
+                    @endforeach
                 </tr>
                 </tbody>
             </table>
