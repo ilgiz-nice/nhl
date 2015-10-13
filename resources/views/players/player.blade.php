@@ -84,8 +84,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($summary[0] as $sum)
-                    @foreach($sum as $s)
+                @foreach($summary[0]->{'seasons'}[0] as $season)
+                    @foreach($season[0] as $s)
+                        //Каждая группа каждый плеофф:
                         <tr>
                             <td colspan="14">{{ $s->stage }} {{ $s->season }}</td>
                         </tr>

@@ -212,12 +212,12 @@ class Match extends Model
         foreach ($seasons as $s) {
             $object = (object) array();
             $object->{'seasons'} = array();
-            array_push($arrayTeams, $object);
-            $object = (object) array();
-            $object->{$s->season} = array();
             $object->{'group'} = array();
             $object->{'playoff'} = array();
             $object->{'total'} = array();
+            array_push($arrayTeams, $object);
+            $object = (object) array();
+            $object->{$s->season} = array();
             array_push($arrayTeams[0]->{'seasons'}, $object);
             $object = (object) array();
             $object->{'group'} = array();
@@ -236,7 +236,7 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
-                array_push($arrayTeams[0]->{$s->season}[0]->{'group'}, $object);
+                array_push($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'group'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
@@ -249,7 +249,7 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
-                array_push($arrayTeams[0]->{$s->season}[0]->{'playoff'}, $object);
+                array_push($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'playoff'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
@@ -291,19 +291,21 @@ class Match extends Model
                 array_push($arrayTeams[0]->{'total'}, $object);
             }
         } //Шаблон для команд
-        dd($arrayTeams);
 
         foreach ($seasons as $s) {
             $object = (object) array();
-            $object->{$s->season} = array();
+            $object->{'seasons'} = array();
             $object->{'group'} = array();
             $object->{'playoff'} = array();
             $object->{'total'} = array();
             array_push($arrayPlayers, $object);
             $object = (object) array();
+            $object->{$s->season} = array();
+            array_push($arrayPlayers[0]->{'seasons'}, $object);
+            $object = (object) array();
             $object->{'group'} = array();
             $object->{'playoff'} = array();
-            array_push($arrayPlayers[0]->{$s->season}, $object);
+            array_push($arrayPlayers[0]->{'seasons'}[0]->{$s->season}, $object);
             foreach ($players as $p) {
                 $object = (object) array();
                 $object->id = $p->id;
@@ -324,7 +326,7 @@ class Match extends Model
                 $object->goalsOvertime = 0; //надо добавить
                 $object->goalsWin = 0; //goals
                 $object->bullitsWin = 0; //goals
-                array_push($arrayPlayers[0]->{$s->season}[0]->{'group'}, $object);
+                array_push($arrayPlayers[0]->{'seasons'}[0]->{$s->season}[0]->{'group'}, $object);
                 $object = (object) array();
                 $object->id = $p->id;
                 $object->name = $p->name;
@@ -344,7 +346,7 @@ class Match extends Model
                 $object->goalsOvertime = 0; //надо добавить
                 $object->goalsWin = 0; //goals
                 $object->bullitsWin = 0; //goals
-                array_push($arrayPlayers[0]->{$s->season}[0]->{'playoff'}, $object);
+                array_push($arrayPlayers[0]->{'seasons'}[0]->{$s->season}[0]->{'playoff'}, $object);
                 $object = (object) array();
                 $object->id = $p->id;
                 $object->name = $p->name;
@@ -415,7 +417,7 @@ class Match extends Model
             foreach ($matchesGroup as $m) { // Группа
                 foreach ($teams as $t) { // Команды
                     if ($m->home_id == $t->id OR $m->guest_id == $t->id) {
-                        foreach ($arrayTeams[0]->{$s->season}[0]->{'group'} as $a) {
+                        foreach ($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'group'} as $a) {
                             if ($a->id == $t->id) {
                                 // Количество игр
                                 $a->games = $a->games + 1;
@@ -531,7 +533,7 @@ class Match extends Model
                 if ($id != null) { // Игроки
                     foreach ($players as $p) {
                         foreach ($goals as $g) {
-                            foreach ($arrayPlayers[0]->{$s->season}[0]->{'group'} as $a) {
+                            foreach ($arrayPlayers[0]->{'seasons'}[0]->{$s->season}[0]->{'group'} as $a) {
                                 if ($a->id == $p->id) {
                                     $a->stage = 'Группа';
                                     $a->season = $s->season;
@@ -596,7 +598,7 @@ class Match extends Model
             foreach ($matchesPlayoff as $m) { //summaryPlayoff
                 foreach ($teams as $t) { //summaryTeam
                     if ($m->home_id == $t->id OR $m->guest_id == $t->id) {
-                        foreach ($arrayTeams[0]->{$s->season}[0]->{'playoff'} as $a) {
+                        foreach ($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'playoff'} as $a) {
                             if ($a->id == $t->id) {
                                 // Количество игр
                                 $a->games = $a->games + 1;
@@ -712,7 +714,7 @@ class Match extends Model
                 if ($id != null) { //summaryPlayer
                     foreach ($players as $p) {
                         foreach ($goals as $g) {
-                            foreach ($arrayPlayers[0]->{$s->season}[0]->{'playoff'} as $a) {
+                            foreach ($arrayPlayers[0]->{'seasons'}[0]->{$s->season}[0]->{'playoff'} as $a) {
                                 if ($a->id == $p->id) {
                                     $a->stage = 'Плейофф';
                                     $a->season = $s->season;
@@ -775,7 +777,8 @@ class Match extends Model
             } // Плейофф
 
         } //Заполнение по сезонам
-        dd($arrayPlayers);
+
+        dd($arrayTeams);
 
         if ($id != null) {
             return $arrayPlayers;
