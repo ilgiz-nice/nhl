@@ -18,7 +18,8 @@ elixir(function(mix) {
         'manager.scss',
         'matches.scss',
         'teams.scss',
-        'players.scss'
+        'players.scss',
+        'calendar.scss'
     ]);
 
      mix.styles([

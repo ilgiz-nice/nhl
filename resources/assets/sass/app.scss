@@ -39,7 +39,6 @@ footer { //Сломался футер
 }
 
 .titleTabs { //Глобальные табы
-  width: 100%;
   background: #fff;
   padding: 30px 3.5%;
   overflow: hidden;
@@ -47,7 +46,6 @@ footer { //Сломался футер
     h2 {
       float: left;
       position: relative;
-      margin: 0 2em -20px 0;
       z-index: 2;
       padding-top: 0;
     }

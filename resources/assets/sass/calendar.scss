@@ -1,0 +1,98 @@
+.calendar { //Страница календарь/результат
+  h3 {
+    padding-top: 0;
+  }
+  .titleTabs {
+    background-color: #2c3941;
+    h2 {
+      margin :0;
+    }
+  }
+  .block { //Главный блок
+    background: #2c3941;
+    color: #fff;
+    padding: 30px 3.5%;
+    overflow: hidden;
+    .nav { //Навигация у прошедших
+      padding: 30px 0 30px 0;
+      .switcher { //Спойлеры
+        margin: 1.2em 0 0 0;
+      }
+    }
+    h3 { //"Будущие", "Прошедшие"
+      font-weight: normal;
+      line-height: 1.3em;
+      margin-bottom: 0.5em;
+    }
+    ul { //Список будущих и прошедших матчей
+      overflow: hidden;
+      margin: 0 -1.75%;
+      li {
+        width: 39.4%;
+        float: left;
+        border: none;
+        margin: 0 1.75% 30px 1.75%;
+        height: 160px;
+        background: #232c32;
+        padding: 20px 3.5%;
+        .home { //левая часть
+          width: 35%;
+          float: left;
+        }
+        .score { //Центральная часть
+          width: 30%;
+          float: left;
+          text-align: center;
+          padding-top: 30px;
+          .date { //Дата начала
+            font-size: 12px;
+            color: #999;
+            position: relative;
+            top: -1em;
+          }
+          h3 { //Или счет или время начала
+            font-family: "latobold";
+            color: #fff;
+            white-space: nowrap;
+          }
+          .period { //Голы по периодам в прошедших матчах
+            font-size: 14px;
+            white-space: nowrap;
+            color: #666;
+          }
+        }
+        .guest { //Правая часть
+          width: 35%;
+          float: left;
+          text-align: right;
+        }
+        .home, .guest { //Стили для левой и правой частей
+          position: relative;
+          .img { //Блок для логотипа
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            img { //Логотип
+              border-radius: 0;
+              height: auto;
+              max-height: 50px;
+              max-width: 50px;
+              overflow: hidden;
+              width: 100%;
+            }
+          }
+          .info { //Нижняя часть с командой и  городом
+            padding: 60px 0 0 0;
+            text-align: center;
+            .city { //Город
+              color: #999;
+            }
+          }
+        }
+      }
+      li:hover {
+        border: 1px solid #02a7fd;
+      }
+    }
+  }
+}

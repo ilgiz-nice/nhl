@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\DB;
 class CalendarController extends Controller
 {
     public function index() {
-        $calendar = Match::Calendar()->get();
-        return view('calendar.index', compact('calendar'));
+        $played = Match::Calendar('Завершен')->get();
+        $notPlayed = Match::Calendar('Ожидается')->get();
+        return view('calendar.index', compact('played', 'notPlayed'));
     }
 }

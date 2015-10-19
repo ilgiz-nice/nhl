@@ -11,8 +11,11 @@ use App\News;
 class NewsController extends Controller
 {
     public function index() {
-        $news = News::all();
-        return view('news.index', compact('news'));
+        $news = News::News()->get();
+        $first = News::Date()->get();
+        $last = News::Date('DESC')->get();
+        dd($last[0]->created_at);
+        return view('news.index', compact('news', 'first', 'last'));
     }
 
     public function create(Request $request) {

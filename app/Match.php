@@ -53,6 +53,7 @@ class Match extends Model
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->orderBy('date', 'ASC');
     }
+
     /*
      * Используется в teams/team
      */
@@ -61,17 +62,6 @@ class Match extends Model
         $query->select('match.*', 'home.name as home', 'guest.name as guest')
             ->where('match.home_id', $id)
             ->orWhere('match.guest_id', $id)
-            ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
-            ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
-            ->orderBy('date', 'ASC');
-    }
-
-    /*
-     * Календарь/Результат (переделать)
-     */
-
-    public function scopeCalendar($query) {
-        $query->select('match.*', 'home.name as home', 'guest.name as guest')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->orderBy('date', 'ASC');
@@ -193,7 +183,7 @@ class Match extends Model
             'home.city as home_city', 'guest.city as guest_city')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
-            ->where('match.id', $id);;
+            ->where('match.id', $id);
     }
 
     /*
@@ -788,5 +778,17 @@ class Match extends Model
             return $arrayPlayers;
         }
         return $arrayTeams;
+    }
+
+    /*
+     * Calendar - /calendar/index
+     */
+
+    public function scopeCalendar($query, $param) {
+        $query->select('match.*', 'home.name as homeName', 'guest.name as guestName', 'home.logo as homeLogo', 'guest.logo as guestLogo',
+            'home.city as homeCity', 'guest.city as guestCity')
+            ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
+            ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
+            ->where('match.status', $param);
     }
 }

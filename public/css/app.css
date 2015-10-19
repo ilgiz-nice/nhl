@@ -31,14 +31,12 @@ footer {
   margin-top: 50px; }
 
 .titleTabs {
-  width: 100%;
   background: #fff;
   padding: 30px 3.5%;
   overflow: hidden; }
   .titleTabs .line h2 {
     float: left;
     position: relative;
-    margin: 0 2em -20px 0;
     z-index: 2;
     padding-top: 0; }
   .titleTabs .line .tabs {
@@ -472,5 +470,99 @@ footer {
       top: 50%;
       left: -1px;
       margin-top: -25px; }
+
+.players .player.block .stats .table thead th {
+  padding: 4px 8px; }
+
+.players .player.block .stats .table tbody tr {
+  height: 24px; }
+  .players .player.block .stats .table tbody tr td a {
+    color: #02a7fd; }
+
+.players .player.block .stats .table tbody tr:nth-child(odd) {
+  font-size: larger;
+  background-color: #d9f2ff;
+  height: 28px; }
+
+.players .player.block .stats .table tbody tr:nth-last-child(-n+3) {
+  background-color: #fff; }
+
+.calendar h3 {
+  padding-top: 0; }
+
+.calendar .titleTabs {
+  background-color: #2c3941; }
+  .calendar .titleTabs h2 {
+    margin: 0; }
+
+.calendar .block {
+  background: #2c3941;
+  color: #fff;
+  padding: 30px 3.5%;
+  overflow: hidden; }
+  .calendar .block .nav {
+    padding: 30px 0 30px 0; }
+    .calendar .block .nav .switcher {
+      margin: 1.2em 0 0 0; }
+  .calendar .block h3 {
+    font-weight: normal;
+    line-height: 1.3em;
+    margin-bottom: 0.5em; }
+  .calendar .block ul {
+    overflow: hidden;
+    margin: 0 -1.75%; }
+    .calendar .block ul li {
+      width: 39.4%;
+      float: left;
+      border: none;
+      margin: 0 1.75% 30px 1.75%;
+      height: 160px;
+      background: #232c32;
+      padding: 20px 3.5%; }
+      .calendar .block ul li .home {
+        width: 35%;
+        float: left; }
+      .calendar .block ul li .score {
+        width: 30%;
+        float: left;
+        text-align: center;
+        padding-top: 30px; }
+        .calendar .block ul li .score .date {
+          font-size: 12px;
+          color: #999;
+          position: relative;
+          top: -1em; }
+        .calendar .block ul li .score h3 {
+          font-family: "latobold";
+          color: #fff;
+          white-space: nowrap; }
+        .calendar .block ul li .score .period {
+          font-size: 14px;
+          white-space: nowrap;
+          color: #666; }
+      .calendar .block ul li .guest {
+        width: 35%;
+        float: left;
+        text-align: right; }
+      .calendar .block ul li .home, .calendar .block ul li .guest {
+        position: relative; }
+        .calendar .block ul li .home .img, .calendar .block ul li .guest .img {
+          position: absolute;
+          width: 100%;
+          text-align: center; }
+          .calendar .block ul li .home .img img, .calendar .block ul li .guest .img img {
+            border-radius: 0;
+            height: auto;
+            max-height: 50px;
+            max-width: 50px;
+            overflow: hidden;
+            width: 100%; }
+        .calendar .block ul li .home .info, .calendar .block ul li .guest .info {
+          padding: 60px 0 0 0;
+          text-align: center; }
+          .calendar .block ul li .home .info .city, .calendar .block ul li .guest .info .city {
+            color: #999; }
+    .calendar .block ul li:hover {
+      border: 1px solid #02a7fd; }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,22 +1,79 @@
 @extends('app')
 
+@section('title')
+    Календарь/Результат
+@endsection
+
 @section('content')
     <div class="calendar">
-        @foreach($calendar as $c)
-            <div class="link" data-href="/news/{{$c->id}}">
-                <div class="date">
-                    {{ $c['date'] }}
-                </div>
-                <div class="home">
-                    {{ $c['home'] }}
-                </div>
-                <div class="result">
-                    {{ $c['home_goals'] }} - {{ $c['guest_goals'] }}
-                </div>
-                <div class="guest">
-                    {{ $c['guest'] }}
+        <div class="block">
+            <div class="titleTabs">
+                <div class="line">
+                    <h2>Матчи</h2>
                 </div>
             </div>
-        @endforeach
+        </div>
+        <div class="block">
+            <h3>Будущие</h3>
+            <ul>
+                @foreach($notPlayed as $m)
+                    <li>
+                        <div class="home">
+                            <div class="img">
+                                {!! HTML::image($m->homeLogo) !!}
+                            </div>
+                            <div class="info">
+                                <h5>{{ $m->homeName }}</h5>
+                                <p class="city">{{ $m->homeCity }}</p>
+                            </div>
+                        </div>
+                        <div class="score">
+                            <div class="date">{{ $m->date }}</div>
+                            <h3>{{ $m->start }}</h3>
+                        </div>
+                        <div class="guest">
+                            <div class="img">
+                                {!! HTML::image($m->guestLogo) !!}
+                            </div>
+                            <div class="info">
+                                <h5>{{ $m->guestName }}</h5>
+                                <p class="city">{{ $m->guestCity }}</p>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+        <div class="block">
+            <h3>Прошедшие</h3>
+            <ul>
+                @foreach($played as $m)
+                    <li>
+                        <div class="home">
+                            <div class="img">
+                                {!! HTML::image($m->homeLogo) !!}
+                            </div>
+                            <div class="info">
+                                <h5>{{ $m->homeName }}</h5>
+                                <p class="city">{{ $m->homeCity }}</p>
+                            </div>
+                        </div>
+                        <div class="score">
+                            <div class="date">{{ $m->date }}</div>
+                            <h3>{{ $m->home_goals }} - {{ $m->guest_goals }}</h3>
+                        </div>
+                        <div class="guest">
+                            <div class="img">
+                                {!! HTML::image($m->guestLogo) !!}
+                            </div>
+                            <div class="info">
+                                <h5>{{ $m->guestName }}</h5>
+                                <p class="city">{{ $m->guestCity }}</p>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 @stop
