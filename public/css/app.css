@@ -565,4 +565,74 @@ footer {
     .calendar .block ul li:hover {
       border: 1px solid #02a7fd; }
 
+.news .block .date {
+  width: 100%;
+  background: #fff;
+  padding: 30px 3.5%;
+  overflow: hidden;
+  position: relative; }
+  .news .block .date .figure {
+    position: relative;
+    display: inline-block;
+    background: #02a7fd;
+    height: 1.6em;
+    line-height: 1.5em;
+    margin: 0 1.4em;
+    z-index: 2; }
+  .news .block .date .figure:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    left: -1.4em;
+    width: 1.4em;
+    height: 100%;
+    background: url("../img/blue.png") 0 100% no-repeat; }
+  .news .block .date .figure:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    right: -1.4em;
+    width: 1.4em;
+    height: 100%;
+    background: url("../img/blue.png") 100% 0 no-repeat; }
+
+.news .block .articles {
+  overflow: hidden;
+  background: #fff; }
+  .news .block .articles .news {
+    float: left;
+    width: 100%;
+    padding: 0 3.5% 30px 3.5%; }
+    .news .block .articles .news .main {
+      position: relative;
+      box-sizing: border-box; }
+      .news .block .articles .news .main .image {
+        height: 410px;
+        background: url(/upload/iblock/5e6/5e639993ae95a9e71a0513d2f4345a48.jpg) 50% 50% no-repeat;
+        background-size: cover; }
+      .news .block .articles .news .main a {
+        color: #000;
+        margin-top: 12px; }
+        .news .block .articles .news .main a h4 {
+          margin-bottom: 0; }
+          .news .block .articles .news .main a h4 .timestamp {
+            color: #999999;
+            font-family: 'latoregular';
+            font-size: 14px; }
+          .news .block .articles .news .main a h4 .timestamp:before {
+            content: '<';
+            font-family: 'icomoon';
+            margin-right: 5px;
+            color: #cacfd1; }
+    .news .block .articles .news .rest {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+      .news .block .articles .news .rest .flex {
+        float: left;
+        padding: 25px 1.75% 0;
+        width: 50%; }
+
 /*# sourceMappingURL=app.css.map */

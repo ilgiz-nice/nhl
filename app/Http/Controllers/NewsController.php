@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\News;
+use Carbon;
 
 class NewsController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $news = News::News()->get();
         $first = News::Date()->get();
         $last = News::Date('DESC')->get();
-        dd($last[0]->created_at);
         return view('news.index', compact('news', 'first', 'last'));
     }
 

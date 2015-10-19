@@ -19,7 +19,8 @@ elixir(function(mix) {
         'matches.scss',
         'teams.scss',
         'players.scss',
-        'calendar.scss'
+        'calendar.scss',
+        'news.scss'
     ]);
 
      mix.styles([
