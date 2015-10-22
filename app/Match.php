@@ -33,17 +33,6 @@ class Match extends Model
     ];
 
     /*
-     * Export - manager/index
-     */
-
-    public function scopeExport($query) {
-        $query->select('match.*', 'home.name as home', 'guest.name as guest')
-            ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
-            ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
-            ->orderBy('date', 'DESC');
-    }
-
-    /*
      * Games - main/index
      */
 
@@ -217,6 +206,7 @@ class Match extends Model
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
+                $object->logo = $t->logo;
                 $object->games = 0;
                 $object->winMain = 0;
                 $object->winOvertime = 0;
@@ -226,10 +216,12 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
+                $object->points = 0;
                 array_push($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'group'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
+                $object->logo = $t->logo;
                 $object->games = 0;
                 $object->winMain = 0;
                 $object->winOvertime = 0;
@@ -239,10 +231,12 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
+                $object->points = 0;
                 array_push($arrayTeams[0]->{'seasons'}[0]->{$s->season}[0]->{'playoff'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
+                $object->logo = $t->logo;
                 $object->games = 0;
                 $object->winMain = 0;
                 $object->winOvertime = 0;
@@ -252,10 +246,12 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
+                $object->points = 0;
                 array_push($arrayTeams[0]->{'group'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
+                $object->logo = $t->logo;
                 $object->games = 0;
                 $object->winMain = 0;
                 $object->winOvertime = 0;
@@ -265,10 +261,12 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
+                $object->points = 0;
                 array_push($arrayTeams[0]->{'playoff'}, $object);
                 $object = (object) array();
                 $object->id = $t->id;
                 $object->name = $t->name;
+                $object->logo = $t->logo;
                 $object->games = 0;
                 $object->winMain = 0;
                 $object->winOvertime = 0;
@@ -278,6 +276,7 @@ class Match extends Model
                 $object->loseBullitt = 0;
                 $object->goalsGiven = 0;
                 $object->goalsTaken = 0;
+                $object->points = 0;
                 array_push($arrayTeams[0]->{'total'}, $object);
             }
         } //Шаблон для команд
@@ -445,7 +444,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         } //Сезон->Группа
 
@@ -482,7 +481,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         } //Группа
 
@@ -519,7 +518,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         } //Итого
                     }
@@ -627,7 +626,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         }
 
@@ -664,7 +663,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         }
 
@@ -701,7 +700,7 @@ class Match extends Model
                                     $a->goalsGiven = $a->goalsGiven + $m->guest_goals;
                                 }
                                 // Очки
-                                $a->poins = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
+                                $a->points = $a->winMain * 3 + $a->winOvertime * 2 + $a->winBullitt * 2 + $a->loseOvertime + $a->loseBullitt;
                             }
                         }
                     }

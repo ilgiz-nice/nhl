@@ -80,6 +80,9 @@ footer {
     height: 1px;
     background: #d7e6ee; }
 
+.hidden {
+  display: none; }
+
 .main .games {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -168,7 +171,7 @@ footer {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  .main .news .block {
+  .main .news .mini {
     width: 20%; }
 
 .main .stats .table thead {
@@ -634,5 +637,32 @@ footer {
         float: left;
         padding: 25px 1.75% 0;
         width: 50%; }
+
+.stats .tabContent .block {
+  padding: 30px 3.5%; }
+
+.stats .tabContent .block.command .table {
+  width: 100%; }
+  .stats .tabContent .block.command .table thead th:first-child {
+    width: 500px; }
+  .stats .tabContent .block.command .table thead th {
+    width: 130px; }
+  .stats .tabContent .block.command .table thead th:nth-child(9) {
+    width: 191px; }
+  .stats .tabContent .block.command .table tbody tr:nth-child(odd) {
+    background-color: #f1fafe; }
+  .stats .tabContent .block.command .table tbody tr {
+    background: #fff; }
+    .stats .tabContent .block.command .table tbody tr td {
+      padding: 4px;
+      text-align: center; }
+    .stats .tabContent .block.command .table tbody tr td:first-child {
+      text-align: left; }
+      .stats .tabContent .block.command .table tbody tr td:first-child img {
+        margin-right: 10px;
+        width: 40px;
+        height: 40px; }
+      .stats .tabContent .block.command .table tbody tr td:first-child a {
+        color: #000000; }
 
 /*# sourceMappingURL=app.css.map */

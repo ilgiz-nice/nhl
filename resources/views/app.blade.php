@@ -10,7 +10,6 @@
     {!! HTML::style('css/app.css') !!}
 </head>
 <body class="page1" id="top">
-<div class="main">
     <!--==============================header=================================-->
     <header>
         <div class="container_12">

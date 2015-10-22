@@ -48,7 +48,7 @@
         </div> <!-- /teaser -->
         <div class="news">
             @foreach($news as $n)
-                <div class="block link" style="background: url('{{$n->photo}}') 50% 50% no-repeat; background-size:cover;" data-href="/news/{{ $n->id }}">
+                <div class="mini link" style="background: url('{{$n->photo}}') 50% 50% no-repeat; background-size:cover;" data-href="/news/{{ $n->id }}">
                     <a href="/news/{{ $n->id }}">
                         <p>
                             <b>

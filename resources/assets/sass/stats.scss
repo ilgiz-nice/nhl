@@ -1,0 +1,46 @@
+.stats { //Страница "Статистика"
+  .tabContent {
+    .block {
+      padding: 30px 3.5%;
+    }
+    .block.command {
+      .table {
+        width: 100%;
+        thead {
+          th:first-child {
+            width: 500px;
+          }
+          th {
+            width: 130px;
+          }
+          th:nth-child(9) {
+            width: 191px;
+          }
+        }
+        tbody {
+          tr:nth-child(odd) {
+            background-color: #f1fafe;
+          }
+          tr {
+            background: #fff;
+            td {
+              padding: 4px;
+              text-align: center;
+            }
+            td:first-child {
+              text-align: left;
+              img {
+                margin-right: 10px;
+                width: 40px;
+                height: 40px;
+              }
+              a {
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} //Страница "Статистика"
