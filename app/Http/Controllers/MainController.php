@@ -15,8 +15,7 @@ class MainController extends Controller
     public function index() {
         $games = Match::Games()->get();
         $main_news = News::MainNews()->get();
-        $tournament_teams = Team::Tournament();
-        $tournament = Match::Tournament($tournament_teams);
+        $tournament = Match::Summary();
         $news = News::Latest()->get();
         $stats = Player::Stats();
         return view('main.index', compact('games', 'main_news','tournament', 'news', 'stats'));

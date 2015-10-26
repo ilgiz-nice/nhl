@@ -52,6 +52,27 @@ $(document).ready(function() {
         e.preventDefault();
 
     });
+    $('.submitNewsUpdate').click(function(e) {
+        e.preventDefault();
+        var id = $(this).attr('id');
+        var title = $('#'+id+' .title').val();
+        var description = $('#'+id+' .description').val();
+        var main = $('#'+id+' .main').is(':checked');
+        var banner = $('#'+id+' .banner').is(':checked');
+        $.ajax({
+            url: '/news/'+id+'/update',
+            type: 'get',
+            data: {title:title,description:description,main:main,banner:banner},
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+    });
 });
 $(document).ready(function() {
     $('.matchTab').click(function() {

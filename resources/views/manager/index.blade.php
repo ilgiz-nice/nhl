@@ -20,6 +20,7 @@
                         </li>
                         <li><a href="#">Новости</a>
                             <ul>
+                                <li class="show" data-tab="news" data-action="create"><a href="#">Создание</a></li>
                                 <li class="show" data-tab="news" data-action="settings"><a href="#">Настройки</a></li>
                             </ul>
                         </li>
@@ -215,7 +216,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="shown news settings">
+            <div class="shown news create">
                 <div class="container_12">
                     {!! Form::open(['route' => 'news.create', 'method' => 'post', 'files' => true]) !!}
 
@@ -231,6 +232,23 @@
 
                     {!! Form::close() !!}
                 </div>
+            </div>
+            <div class="shown news settings">
+                @foreach($news as $n)
+                    <div id="{{ $n->id }}" class="newsBlock">
+                        <div>
+                            <label for="">Название</label>
+                            <input class="title" type="text" value="{{ $n->title }}">
+                        </div>
+                        <div>
+                            <label for="">Содержание</label>
+                            <input class="description" type="text" value="{{ $n->description }}">
+                        </div>
+                        <input type="radio" class="main" name="{{ Carbon::parse($n->created_at)->format('d-m-y') }}" checked="{{ $n->main }}">Новость дня
+                        <input type="radio" class="banner" name="banner" checked="{{ $n->banner }}">Баннер на главной
+                        <input type="submit" value="Обновить" class="submitNewsUpdate" id="{{ $n->id }}">
+                    </div>
+                @endforeach
             </div>
             <div class="shown players export">
                 {!! Form::open(['route' => 'players.export', 'method' => 'get']) !!}

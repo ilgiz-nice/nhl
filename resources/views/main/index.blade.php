@@ -9,7 +9,7 @@
         <div class="games">
             @foreach($games as $g)
                 <div class="block link" data-href="/matches/{{ $g['id'] }}">
-                    <div class="participants">{{ $g['home'] }} {{ $g['home_goals'] }}-{{ $g['guest_goals'] }} {{ $g['guest'] }}</div>
+                    <div class="participants">{{ $g['homeShort'] }} {{ $g['home_goals'] }}-{{ $g['guest_goals'] }} {{ $g['guestShort'] }}</div>
                     <div class="date">{{ $g['date'] }}</div>
                 </div>
             @endforeach
@@ -33,13 +33,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($tournament as $t)
-                        <tr class="link" data-href="/teams/{{ $t['id'] }}">
-                            <td>{{ $t['name'] }}</td>
-                            <td>{{ $t['games'] }}</td>
-                            <td>{{ $t['wins'] }}</td>
-                            <td>{{ $t['loses'] }}</td>
-                            <td>{{ $t['points'] }}</td>
+                    @foreach($tournament[0]->total as $t)
+                        <tr class="link" data-href="/teams/{{ $t->id }}">
+                            <td>{{ $t->name }}</td>
+                            <td>{{ $t->games }}</td>
+                            <td>{{ $t->winMain + $t->winOvertime + $t->winBullitt}}</td>
+                            <td>{{ $t->loseMain + $t->loseOvertime + $t->loseBullitt}}</td>
+                            <td>{{ $t->points }}</td>
                         </tr>
                     @endforeach
                     </tbody>

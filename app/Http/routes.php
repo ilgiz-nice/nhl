@@ -18,12 +18,16 @@ Route::get('/', 'MainController@index');
 /*
  * Новости (1)
  */
+Route::get('/news/{id}/update', array(
+    'as' => 'news.update',
+    'uses' => 'NewsController@update'
+));
 Route::get('news', 'NewsController@index');
-Route::get('/news/{{id}}', 'NewsController@show');
-Route::post( '/news/create', array(
+Route::get('/news/{id}', 'NewsController@show');
+Route::get( '/news/create', array(
     'as' => 'news.create',
     'uses' => 'NewsController@create'
-) );
+));
 /*
  * Календарь/Результат (2)
  */

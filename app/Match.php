@@ -32,12 +32,21 @@ class Match extends Model
         'lose_additional_time'
     ];
 
+    public function scopeExport($query)
+    { //Список команд для экспорта в manager/index
+        $query->select('match.*', 'home.name as home', 'guest.name as guest')
+            ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
+            ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
+            ->orderBy('date', 'DESC');
+    }
+
     /*
      * Games - main/index
      */
 
     public function scopeGames($query) {
-        $query->select('match.*', 'home.name as home', 'guest.name as guest')
+        $query->select('match.*', 'home.name as home', 'guest.name as guest',
+            'home.short as homeShort', 'guest.short as guestShort')
             ->leftJoin('teams AS home', 'home.id', '=', 'match.home_id')
             ->leftJoin('teams AS guest', 'guest.id', '=', 'match.guest_id')
             ->orderBy('date', 'ASC');

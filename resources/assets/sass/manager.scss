@@ -68,4 +68,27 @@ $white: #FFF;
       }
     }
   }
+
+  .newsBlock {
+    width: 93%;
+    padding: 15px 3.5%;
+    font-size: 25px;
+    line-height: 1.5;
+    div {
+      display: inline-block;
+      label {
+        line-height: 1.5;
+        font-size: 30px;
+      }
+      input {
+        height: 30px;
+        width: 200px;
+      }
+    }
+    div:nth-child(2) {
+      input {
+        width: 500px;
+      }
+    }
+  }
 }

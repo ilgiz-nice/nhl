@@ -8,15 +8,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\News;
 use Carbon;
+use Input;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::News()->get();
-        $first = News::Date()->get();
-        $last = News::Date('DESC')->get();
-        return view('news.index', compact('news', 'first', 'last'));
+        $news = News::News();
+        return view('news.index', compact('news'));
     }
 
     public function create(Request $request) {
@@ -28,5 +27,25 @@ class NewsController extends Controller
         ]);
 
         return redirect('/manager');
+    }
+
+    public function update($id) {
+        $article = News::findOrFail($id);
+        $title = Input::get('title');
+        $description = Input::get('description');
+        $main = Input::get('main');
+        $banner = Input::get('banner');
+
+        $main = $main == "true" ? 1 : 0;
+        $banner = $banner == "true" ? 1 : 0;
+
+        $article->update([
+            'title'         => $title,
+            'description'   => $description,
+            'main'          => $main,
+            'banner'        => $banner
+        ]);
+
+        return 'Updated';
     }
 }

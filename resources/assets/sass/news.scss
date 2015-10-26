@@ -14,6 +14,7 @@
         line-height: 1.5em;
         margin: 0 1.4em;
         z-index: 2;
+        color: #FFF;
       }
       .figure:before {
         position: absolute;
@@ -23,7 +24,7 @@
         left: -1.4em;
         width: 1.4em;
         height: 100%;
-        background: url('../img/blue.png') 0 100% no-repeat;
+        background: url('/images/blue.png') 0 100% no-repeat;
       }
       .figure:after {
         position: absolute;
@@ -33,7 +34,7 @@
         right: -1.4em;
         width: 1.4em;
         height: 100%;
-        background: url('../img/blue.png') 100% 0 no-repeat;
+        background: url('/images/blue.png') 100% 0 no-repeat;
       }
     } // Фигура с датой
 
@@ -42,15 +43,16 @@
       background: #fff;
       .news{
         float: left;
-        width: 100%;
+        width: 93%;
         padding: 0 3.5% 30px 3.5%;
+        .fa-clock-o {
+          line-height: 1.5;
+        }
         .main { //Главная новость
           position: relative;
           box-sizing: border-box;
           .image {
             height: 410px;
-            background: url(/upload/iblock/5e6/5e639993ae95a9e71a0513d2f4345a48.jpg) 50% 50% no-repeat;
-            background-size: cover;
           }
           a {
             color: #000;
@@ -59,14 +61,7 @@
               margin-bottom: 0;
               .timestamp {
                 color: #999999;
-                font-family: 'latoregular';
                 font-size: 14px;
-              }
-              .timestamp:before {
-                content: '<';
-                font-family: 'icomoon';
-                margin-right: 5px;
-                color: #cacfd1;
               }
             }
           }
@@ -77,6 +72,10 @@
             float: left;
             padding: 25px 1.75% 0;
             width: 50%;
+            .timestamp {
+              color: #999999;
+              font-size: 14px;
+            }
           }
         }
       }
