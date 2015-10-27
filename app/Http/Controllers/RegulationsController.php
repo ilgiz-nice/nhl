@@ -9,5 +9,7 @@ use App\Http\Controllers\Controller;
 
 class RegulationsController extends Controller
 {
-    //
+    public function index() {
+        return view('regulations.index');
+    }
 }
