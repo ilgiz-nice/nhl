@@ -41,7 +41,7 @@
                         </li>
                         <li><a href="#">Сезоны</a>
                             <ul>
-                                <li class="show" data-tab="seasons" data-action="settings"><a href="#">Настройки</a></li>
+                                <li class="show" data-tab="seasons" data-action="create"><a href="#">Создание</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -246,9 +246,9 @@
                         </div>
                         <input type="radio" class="main" name="{{ Carbon::parse($n->created_at)->format('d-m-y') }}" checked="{{ $n->main }}">Новость дня
                         <input type="radio" class="banner" name="banner" checked="{{ $n->banner }}">Баннер на главной
-                        <input type="submit" value="Обновить" class="submitNewsUpdate" id="{{ $n->id }}">
                     </div>
                 @endforeach
+                <input type="submit" value="Обновить" class="submitNewsUpdate">
             </div>
             <div class="shown players export">
                 {!! Form::open(['route' => 'players.export', 'method' => 'get']) !!}
@@ -310,11 +310,11 @@
                 </div>
             </div> <!-- /teams/coach -->
             <div class="shown teams settings"></div>
-            <div class="shown seasons settings">
+            <div class="shown seasons create">
                 {!! Form::open(['route' => 'seasons.create', 'method' => 'post']) !!}
 
                 {!! Form::label('season', 'Сезон:') !!}
-                {!! Form::text('season', '', ['pattern' => '[0-9]{2}\-[0-9]{2}', 'required' => true]) !!}
+                {!! Form::text('season', '', ['pattern' => '[0-9]{2}\-[0-9]{2}', 'required' => true, 'placeholder' => '15-16']) !!}
 
                 {!! Form::submit('Добавить сезон') !!}
 

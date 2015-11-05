@@ -7,11 +7,25 @@
 @section('content')
     <div class="main">
         <div class="games">
-            @foreach($games as $g)
-                <div class="block link" data-href="/matches/{{ $g['id'] }}">
-                    <div class="participants">{{ $g['homeShort'] }} {{ $g['home_goals'] }}-{{ $g['guest_goals'] }} {{ $g['guestShort'] }}</div>
-                    <div class="date">{{ $g['date'] }}</div>
-                </div>
+            @foreach($matches as $m)
+                @if($m->date < Carbon::now()->format('Y-m-d'))
+                    <div class="block link past" data-href="/matches/{{ $m->id }}">
+                        <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
+                        <div class="date">{{ $m->date }}</div>
+                    </div>
+                @endif
+                @if($m->date == Carbon::now()->format('Y-m-d'))
+                        <div class="block link today" data-href="/matches/{{ $m->id }}">
+                            <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
+                            <div class="date">{{ $m->date }}</div>
+                        </div>
+                @endif
+                    @if($m->date > Carbon::now()->format('Y-m-d'))
+                        <div class="block link future" data-href="/matches/{{ $m->id }}">
+                            <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
+                            <div class="date">{{ $m->date }}</div>
+                        </div>
+                    @endif
             @endforeach
         </div> <!-- /games -->
         <div class="teaser">

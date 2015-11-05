@@ -24,7 +24,7 @@ Route::get('/news/{id}/update', array(
 ));
 Route::get('news', 'NewsController@index');
 Route::get('/news/{id}', 'NewsController@show');
-Route::get( '/news/create', array(
+Route::post( '/news/create', array(
     'as' => 'news.create',
     'uses' => 'NewsController@create'
 ));

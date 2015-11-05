@@ -21,6 +21,7 @@ class CreateGoalsTable extends Migration
             $table->integer('player_assist_1_id')->nullable()->unsigned();
             $table->integer('player_assist_2_id')->nullable()->unsigned();
             $table->time('time');
+            $table->boolean('overtime');
             $table->boolean('bullitt');
             $table->boolean('win_bullitt');
             $table->boolean('win_goal');

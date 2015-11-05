@@ -30,8 +30,10 @@ class CreateMatchTable extends Migration
             $table->integer('guest_goals')->nullable();
             $table->integer('win_main_time')->nullable();
             $table->integer('win_additional_time')->nullable();
+            $table->integer('win_bullitt')->nullable();
             $table->integer('lose_main_time')->nullable();
             $table->integer('lose_additional_time')->nullable();
+            $table->integer('lose_bullitt')->nullable();
             $table->timestamps();
 
             $table->foreign('season_id')->references('id')->on('seasons');

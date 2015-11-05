@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Season extends Model
 {
     protected $fillable = [
-        'year',
+        'season',
         'participants',
         'placement',
         'active'

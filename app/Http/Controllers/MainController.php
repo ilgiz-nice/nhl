@@ -13,11 +13,11 @@ use App\News;
 class MainController extends Controller
 {
     public function index() {
-        $games = Match::Games()->get();
         $main_news = News::MainNews()->get();
         $tournament = Match::Summary();
         $news = News::Latest()->get();
         $stats = Player::Stats();
-        return view('main.index', compact('games', 'main_news','tournament', 'news', 'stats'));
+        $matches = Match::with('homeTeam', 'guestTeam')->get();
+        return view('main.index', compact('matches', 'main_news','tournament', 'news', 'stats'));
     }
 }

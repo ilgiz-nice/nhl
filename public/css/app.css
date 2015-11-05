@@ -99,7 +99,9 @@ footer {
     font-size: 24px;
     color: #8a8687;
     background: #fff;
-    width: 292.5px;
+    -webkit-flex-basis: 10%;
+    -ms-flex-preferred-size: 10%;
+    flex-basis: 10%;
     height: 90px;
     line-height: 45px;
     text-align: center;

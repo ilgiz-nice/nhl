@@ -55,19 +55,20 @@ class MatchesController extends Controller
                     'id матча', 'Состав домашней команды', 'Состав гостевой команды', 'Номер игры', 'Стадия', 'Статус',
                     'Дата', 'Время начала', 'Время окончания', 'id домашней команды', 'id гостевой команды',
                     'Количество зрителей', 'Количество голов домашней команды', 'Количество голов гостевой команды',
-                    'Победа - основное время', 'Победа - овертайм', 'Поражение - основное время', 'Поражение - овертайм'
+                    'Победа - основное время', 'Победа - овертайм', 'Победа - буллиты',
+                    'Поражение - основное время', 'Поражение - овертайм', 'Поражение - буллиты'
                 ));
                 $sheet->row(2, array(
                     $request->id, '', '', $request->num, '', '', $request->date, $request->start, $request->finish, $request->home_id,
-                    $request->guest_id, '', '', '', '', '', '', ''
+                    $request->guest_id, '', '', '', '', '', '', '', '', ''
                 ));
             });
 
             $excel->sheet('Голы', function($sheet) use($request) {
                 $sheet->row(1, array(
                     'id матча', 'id команды', 'id забившего игрока', 'id вратаря', 'id ассист1', 'id ассист2',
-                    'Время гола', 'Буллит 0/1', 'Победный буллит 0/1', 'Победный гол 0/1', 'Неравенство',
-                    'Забивший состав', 'Пропустивший состав'
+                    'Время гола', 'Овертайм 0/1', 'Буллит 0/1', 'Победный буллит 0/1', 'Победный гол 0/1',
+                    'Неравенство', 'Забивший состав', 'Пропустивший состав'
                 ));
                 $sheet->row(2, array(
                     $request->id, '', '', '', '', '', '', '', '', '', '', '', ''
@@ -82,6 +83,7 @@ class MatchesController extends Controller
             $array = $reader->toObject();
 
             $row = $array[0][0];
+            dd($array[1]);
             Match::where('id', '=', $row->id_matcha)->update([
                 'stage' => $row->stadiya,
                 'status' => $row->status,
@@ -95,8 +97,10 @@ class MatchesController extends Controller
                 'guest_goals' => $row->kolichestvo_golov_gostevoy_komandy,
                 'win_main_time' => $row->pobeda_osnovnoe_vremya,
                 'win_additional_time' => $row->pobeda_overtaym,
+                'win_bullitt' => $row->pobeda_bullity,
                 'lose_main_time' => $row->porazhenie_osnovnoe_vremya,
-                'lose_additional_time' => $row->porazhenie_overtaym
+                'lose_additional_time' => $row->porazhenie_overtaym,
+                'lose_bullitt' => $row->porazhenie_bullity
             ]);
             foreach ($array[1] as $r) {
                 Goal::create([
@@ -107,6 +111,7 @@ class MatchesController extends Controller
                     'player_assist_1_id'    => $r->id_assist1,
                     'player_assist_2_id'    => $r->id_assist2,
                     'time'                  => $r->vremya_gola,
+                    'overtime'              => $r->overtaym_01,
                     'bullitt'               => $r->bullit_01,
                     'win_bullitt'           => $r->pobednyy_bullit_01,
                     'win_goal'              => $r->pobednyy_gol_01,

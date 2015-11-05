@@ -1,15 +1,20 @@
 $(document).ready(function() {
-    //Инфо сыгранных игр - показать первую, скрыть остальные
-    $('.games .timeline .block:first-child').addClass('active');
-    $('.games .info .block').hide();
-    $('.games .info .block:first-child').show();
+    //Временная линия
+    var future = $('.games .block.future');
+    var today = $('.games .block.today');
+    var past = $('.games .block.past');
 
-    //Показ при нажатии на timeline
-    $('.games .timeline .block').click(function() {
-        $('.games .timeline .block').removeClass('active');
-        $(this).addClass('active');
-        var target = $(this).attr('data-timeline');
-        $('.games .info .block').hide();
-        $('.games .info .block[data-info='+target+']').show();
-    });
+    $('.games .block').hide(); //скрыть все
+    today.show(); //показать актуальные
+    var rest = 10 - today.length;
+    if (rest <= future.length)
+    {
+        future.slice(0, rest).show(); //заполнить будущими
+    }
+    else if (rest > future.length)
+    {
+        var rest = (rest-future.length) * -1;
+        future.slice(0, future.length).show(); //заполнить будущими
+        past.slice(rest).show(); //заполнить прошлыми
+    }
 });
