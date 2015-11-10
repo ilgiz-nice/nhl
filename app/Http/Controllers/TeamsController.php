@@ -22,11 +22,9 @@ class TeamsController extends Controller
     public function show($id) {
         $coach = Coach::where('id', $id)->get()[0]->name;
         $team = Team::findOrFail($id);
-        $played = Match::TeamCalendar($id)->where('status', 'Завершен')->get();
-        $notPlayed = Match::TeamCalendar($id)->where('status', 'Ожидается')->get();
+        $matches = Match::with('homeTeam', 'guestTeam')->get();
         $players = Player::where('current_team', $id)->get();
-
-        return view('teams.team', compact('team', 'notPlayed', 'played', 'players', 'coach'));
+        return view('teams.team', compact('team', 'matches', 'players', 'coach', 'id'));
     }
 
     public function create(Request $request) {

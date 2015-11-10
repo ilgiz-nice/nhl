@@ -389,29 +389,104 @@ footer {
       .matches .content .content .header .left .team .info .city, .matches .content .content .header .right .team .info .city {
         color: #a3a3a3; }
 
+.teams .list {
+  margin-top: 50px; }
+  .teams .list li {
+    width: 26%;
+    margin: 0 2.5% 40px 2.5%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    vertical-align: top;
+    padding: 20px 3.5%;
+    border: 1px solid #d7e6ee; }
+    .teams .list li .team {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .teams .list li .team .img img {
+        max-width: 100px;
+        max-height: 100px;
+        -webkit-flex-basis: 40%;
+        -ms-flex-preferred-size: 40%;
+        flex-basis: 40%; }
+      .teams .list li .team .text {
+        -webkit-flex-basis: 60%;
+        -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+        line-height: 2;
+        padding-left: 5%; }
+      .teams .list li .team .hrefs {
+        -webkit-flex-basis: 30%;
+        -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+        line-height: 2; }
+
 .teams li {
   width: 20%;
   margin: 0 2.5% 40px 2.5%;
-  display: inline-block;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   vertical-align: top;
   padding: 20px 3.5%;
   border: 1px solid #d7e6ee; }
-  .teams li .img img {
-    border-radius: 0;
-    height: auto;
-    max-height: 80px;
-    max-width: 80px;
-    overflow: hidden;
-    width: 100%; }
-  .teams li .home, .teams li .score {
-    float: left; }
-  .teams li .home {
-    width: 35%; }
-  .teams li .score {
-    width: 30%;
-    text-align: center; }
-  .teams li .guest {
-    text-align: right; }
+
+.teams .calendar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .teams .calendar .played, .teams .calendar .notPlayed {
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    padding: 30px 3.5%; }
+    .teams .calendar .played li, .teams .calendar .notPlayed li {
+      width: 88%;
+      margin: 0 2.5% 40px 2.5%;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      vertical-align: top;
+      padding: 20px 3.5%;
+      border: 1px solid #d7e6ee; }
+      .teams .calendar .played li .home, .teams .calendar .played li .guest, .teams .calendar .notPlayed li .home, .teams .calendar .notPlayed li .guest {
+        -webkit-flex-basis: 35%;
+        -ms-flex-preferred-size: 35%;
+        flex-basis: 35%;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex; }
+        .teams .calendar .played li .home img, .teams .calendar .played li .guest img, .teams .calendar .notPlayed li .home img, .teams .calendar .notPlayed li .guest img {
+          border-radius: 0;
+          height: auto;
+          max-height: 80px;
+          max-width: 80px;
+          overflow: hidden;
+          width: 100%; }
+        .teams .calendar .played li .home .img, .teams .calendar .played li .guest .img, .teams .calendar .notPlayed li .home .img, .teams .calendar .notPlayed li .guest .img {
+          -webkit-flex-basis: 30%;
+          -ms-flex-preferred-size: 30%;
+          flex-basis: 30%; }
+        .teams .calendar .played li .home .info, .teams .calendar .played li .guest .info, .teams .calendar .notPlayed li .home .info, .teams .calendar .notPlayed li .guest .info {
+          -webkit-flex-basis: 60%;
+          -ms-flex-preferred-size: 60%;
+          flex-basis: 60%; }
+      .teams .calendar .played li .score, .teams .calendar .notPlayed li .score {
+        -webkit-flex-basis: 30%;
+        -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+        text-align: center; }
+      .teams .calendar .played li .home .info, .teams .calendar .notPlayed li .home .info {
+        margin-left: 10%; }
+      .teams .calendar .played li .guest, .teams .calendar .notPlayed li .guest {
+        text-align: right; }
+        .teams .calendar .played li .guest .info, .teams .calendar .notPlayed li .guest .info {
+          margin-right: 10%; }
 
 .teams .banner {
   padding: 60px 0 30px; }
@@ -583,7 +658,8 @@ footer {
           .calendar .block ul li .home .info .city, .calendar .block ul li .guest .info .city {
             color: #999; }
     .calendar .block ul li:hover {
-      border: 1px solid #02a7fd; }
+      border: 1px solid #02a7fd;
+      height: 158px; }
 
 .news .block .date {
   width: 100%;

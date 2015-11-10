@@ -19,7 +19,7 @@
                         <tr>
                             <td>
                                 <p>
-                                    Ведущий специалист по связям с общественностью тренеров
+                                    Главный тренер
                                 </p>
                                 <h4>
                                     {{ $coach }}
@@ -38,41 +38,65 @@
         <div class="calendar">
             <div class="notPlayed">
                 <ul>
-                    @foreach($notPlayed as $np)
+                    @foreach($matches as $m)
+                        @if(($m->home_id == $id OR $m->guest_id == $id) AND $m->status == 'Ожидается')
                         <li>
                             <div class="home">
-                                <p>{{ $np->home }}</p>
-                                <p>{{ $np->home_city }}</p>
+                                <div class="img">
+                                    {!! HTML::image($m->homeTeam->logo) !!}
+                                </div>
+                                <div class="info">
+                                    <p>{{ $m->homeTeam->name }}</p>
+                                    <p>{{ $m->homeTeam->city }}</p>
+                                </div>
                             </div>
                             <div class="score">
-                                <p>{{ $np->date }}</p>
-                                <p>{{ $np->start }}</p>
+                                <p>{{ $m->date }}</p>
+                                <p>{{ $m->start }}</p>
                             </div>
                             <div class="guest">
-                                <p>{{ $np->guest }}</p>
-                                <p>{{ $np->guest_city }}</p>
+                                <div class="info">
+                                    <p>{{ $m->guestTeam->name }}</p>
+                                    <p>{{ $m->guestTeam->city }}</p>
+                                </div>
+                                <div class="img">
+                                    {!! HTML::image($m->guestTeam->logo) !!}
+                                </div>
                             </div>
                         </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
             <div class="played">
                 <ul>
-                    @foreach($played as $p)
+                    @foreach($matches as $m)
+                        @if(($m->home_id == $id OR $m->guest_id == $id) AND $m->status == 'Завершен')
                         <li>
                             <div class="home">
-                                <p>{{ $p->home }}</p>
-                                <p>{{ $p->home_city }}</p>
+                                <div class="img">
+                                    {!! HTML::image($m->homeTeam->logo) !!}
+                                </div>
+                                <div class="info">
+                                    <p>{{ $m->homeTeam->name }}</p>
+                                    <p>{{ $m->homeTeam->city }}</p>
+                                </div>
                             </div>
                             <div class="score">
-                                <p>{{ $p->home_goals }} - {{ $p->guest_goals }}</p>
-                                <p>{{ $p->period_score }}</p>
+                                <p>{{ $m->home_goals }} - {{ $m->guest_goals }}</p>
+                                <p>{{ $m->period_score }}1-1 2-1 2-2</p>
                             </div>
                             <div class="guest">
-                                <p>{{ $p->guest }}</p>
-                                <p>{{ $p->guest_city }}</p>
+                                <div class="info">
+                                    <p>{{ $m->guestTeam->name }}</p>
+                                    <p>{{ $m->guestTeam->city }}</p>
+                                </div>
+                                <div class="img">
+                                    {!! HTML::image($m->guestTeam->logo) !!}
+                                </div>
                             </div>
                         </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
