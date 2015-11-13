@@ -15,9 +15,11 @@ use App\News;
 class ManagerController extends Controller
 {
     public function index() {
+        $num = Match::orderBy('num', 'DESC')->first();
+        $num = $num->num + 1;
         $teams = Team::Select();
         $matches = Match::Export()->get();
         $news = News::all();
-        return view('manager/index', compact('teams', 'matches', 'news'));
+        return view('manager/index', compact('teams', 'matches', 'news', 'num'));
     }
 }

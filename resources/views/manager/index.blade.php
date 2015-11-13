@@ -59,7 +59,7 @@
                                     {!! Form::open(['route' => 'matches.create', 'method' => 'post']) !!}
 
                                     {!! Form::label('num', 'Номер игры') !!}
-                                    {!! Form::input('number', 'num', 0, ['min' => '0']) !!}
+                                    {!! Form::input('number', 'num', $num) !!}
 
                                     {!! Form::label('date', 'Дата') !!}
                                     {!! Form::input('date', 'date') !!}
@@ -120,6 +120,7 @@
                                                     {!! Form::hidden('season', $m->season_id) !!}
                                                     {!! Form::hidden('num', $m->num) !!}
                                                     {!! Form::hidden('date', $m->date) !!}
+                                                    {!! Form::hidden('status', $m->status) !!}
                                                     {!! Form::hidden('start', $m->start) !!}
                                                     {!! Form::hidden('finish', $m->finish) !!}
                                                     {!! Form::hidden('home_id', $m->home_id) !!}

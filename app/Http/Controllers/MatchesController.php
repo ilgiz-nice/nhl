@@ -59,7 +59,7 @@ class MatchesController extends Controller
                     'Поражение - основное время', 'Поражение - овертайм', 'Поражение - буллиты'
                 ));
                 $sheet->row(2, array(
-                    $request->id, '', '', $request->num, '', '', $request->date, $request->start, $request->finish, $request->home_id,
+                    $request->id, '', '', $request->num, '', $request->status, $request->date, $request->start, $request->finish, $request->home_id,
                     $request->guest_id, '', '', '', '', '', '', '', '', ''
                 ));
             });
@@ -81,9 +81,7 @@ class MatchesController extends Controller
     public function result(Request $request) {
         Excel::load($request->result->getRealPath(), function($reader) {
             $array = $reader->toObject();
-
             $row = $array[0][0];
-            dd($array[1]);
             Match::where('id', '=', $row->id_matcha)->update([
                 'stage' => $row->stadiya,
                 'status' => $row->status,
