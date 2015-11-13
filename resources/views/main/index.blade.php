@@ -11,19 +11,19 @@
                 @if($m->date < Carbon::now()->format('Y-m-d'))
                     <div class="block link past" data-href="/matches/{{ $m->id }}">
                         <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
-                        <div class="date">{{ $m->date }}</div>
+                        <div class="date">{{ Carbon::parse($m->date)->format('d-M') }}</div>
                     </div>
                 @endif
                 @if($m->date == Carbon::now()->format('Y-m-d'))
                         <div class="block link today" data-href="/matches/{{ $m->id }}">
                             <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
-                            <div class="date">{{ $m->date }}</div>
+                            <div class="date">{{ Carbon::parse($m->date)->format('d-M') }}</div>
                         </div>
                 @endif
                     @if($m->date > Carbon::now()->format('Y-m-d'))
                         <div class="block link future" data-href="/matches/{{ $m->id }}">
                             <div class="participants">{{ $m->homeTeam->short }} {{ $m->home_goals }}-{{ $m->guest_goals }} {{ $m->guestTeam->short }}</div>
-                            <div class="date">{{ $m->date }}</div>
+                            <div class="date">{{ Carbon::parse($m->date)->format('d-M') }}</div>
                         </div>
                     @endif
             @endforeach
@@ -32,7 +32,7 @@
             <div class="main_news" style="background: url('{!! $main_news[0]->photo !!}') 50% 50% no-repeat; background-size:cover;">
                 <a href="/news/{{$main_news[0]->id}}">
                     <h3>{{$main_news[0]->title}}</h3>
-                    <span class="date">{{$main_news[0]->created_at}}</span>
+                    <span class="date">{{ Carbon::parse($main_news[0]->created_at)->format('d-m-y')}}</span>
                 </a>
             </div> <!-- /main_news -->
             <div class="tournament">

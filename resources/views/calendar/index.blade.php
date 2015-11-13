@@ -28,8 +28,8 @@
                             </div>
                         </div>
                         <div class="score">
-                            <div class="date">{{ $m->date }}</div>
-                            <h3>{{ $m->start }}</h3>
+                            <div class="date">{{ Carbon::parse($m->date)->format('d-M') }}</div>
+                            <h3>{{ Carbon::parse($m->start)->format('H:i') }}</h3>
                         </div>
                         <div class="guest">
                             <div class="img">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="score">
-                            <div class="date">{{ $m->date }}</div>
+                            <div class="date">{{ Carbon::parse($m->date)->format('d-M') }}</div>
                             <h3>{{ $m->home_goals }} - {{ $m->guest_goals }}</h3>
                         </div>
                         <div class="guest">
